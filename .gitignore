@@ -1,0 +1,38 @@
+# IDE
+.vs/
+.vscode/
+*.suo
+*.user
+*.sln.docstates
+
+# .NET
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+venv/
+.venv/
+
+# Node (if any frontend)
+node_modules/
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets (NEVER commit these)
+*.pfx
+*.key
+appsettings.Development.json
+.env.local
+.env.production
