@@ -6,6 +6,7 @@
   --line: #d3ccbb;
   --brand: #0d8a78;
   --brand-strong: #0a6a5c;
+  --brand-soft: #dff4ef;
   --card: rgba(255, 255, 255, 0.72);
   --shadow: 0 12px 34px rgba(30, 37, 39, 0.12);
 }
@@ -43,12 +44,19 @@ body {
 }
 
 .topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: min(1100px, calc(100% - 2rem));
-  margin: 0 auto;
-  padding: 1.2rem 0;
+  margin: 0.7rem auto 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
 }
 
 .brand {
@@ -74,7 +82,7 @@ nav a {
 nav a:hover,
 nav a[aria-current="page"] {
   border-color: var(--line);
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(13, 138, 120, 0.1);
 }
 
 .hero-layout {
@@ -133,6 +141,49 @@ h2 {
   gap: 0.7rem;
   margin-top: 1rem;
   flex-wrap: wrap;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 0.4rem;
+}
+
+.metrics article {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  padding: 0.9rem;
+}
+
+.metric-value {
+  margin: 0;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--brand-strong);
+}
+
+.metric-label {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+  margin: 1rem auto 0;
+}
+
+.spotlight {
+  padding: 1.1rem;
+}
+
+.spotlight p {
+  color: var(--muted);
 }
 
 .btn {
@@ -194,6 +245,39 @@ h2 {
 .card,
 .app-card {
   padding: 1rem;
+}
+
+.app-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.status-chip {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  line-height: 1;
+  border-radius: 999px;
+  padding: 0.35rem 0.55rem;
+  color: var(--brand-strong);
+  border: 1px solid rgba(13, 138, 120, 0.34);
+  background: var(--brand-soft);
+  white-space: nowrap;
+}
+
+.app-focus {
+  border-left: 3px solid rgba(13, 138, 120, 0.5);
+  padding-left: 0.55rem;
+}
+
+.app-card h3 {
+  margin: 0.9rem 0 0.4rem;
+  font-size: 0.98rem;
+}
+
+.app-output-list {
+  margin-top: 0;
 }
 
 .card p,
@@ -334,7 +418,9 @@ h2 {
 @media (max-width: 940px) {
   .hero-layout,
   .cards,
-  .app-grid {
+  .app-grid,
+  .metrics,
+  .spotlight-grid {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -347,7 +433,9 @@ h2 {
   .hero-layout,
   .cards,
   .app-grid,
-  .timeline-item {
+  .timeline-item,
+  .metrics,
+  .spotlight-grid {
     grid-template-columns: 1fr;
   }
 
