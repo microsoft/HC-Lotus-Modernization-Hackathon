@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Data Safeguards | White Lotus</title>
+    <title>Security Overview | White Lotus</title>
     <meta name="description" content="Security and data safeguards for the White Lotus modernization hackathon." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="site.css" />
@@ -19,20 +19,34 @@
     <header class="topbar">
       <a class="brand" href="index.html">White Lotus</a>
       <nav>
+        <a href="index.html">Home</a>
         <a href="apps.html">Apps</a>
         <a href="method.html">Method</a>
-        <a href="safeguards.html" aria-current="page">Safeguards</a>
-        <a href="index.html">Home</a>
+        <a href="security.html" aria-current="page">Security</a>
+        <a href="copilot-tips.html">Tips</a>
       </nav>
     </header>
 
     <main class="layout">
       <section class="page-head reveal">
         <p class="eyebrow">Security First</p>
-        <h1>Data Safeguards And Governance</h1>
+        <h1>Security Overview And Safeguards</h1>
         <p>
           The program is explicitly dummy-data-only. No private, protected, or production information is permitted.
         </p>
+      </section>
+
+      <section class="cards reveal delay-1">
+        <article class="card">
+          <h3>Security Overview (This Page)</h3>
+          <p>Executive-level controls, governance posture, and operational guardrails for the PoC.</p>
+          <a href="safeguards.html">You are here</a>
+        </article>
+        <article class="card">
+          <h3>Data Safeguards (Detailed Policy)</h3>
+          <p>Complete ruleset, checklist, prohibited content matrix, and incident-response steps.</p>
+          <a href="data-safeguards.html">Open Detailed Data Safeguards</a>
+        </article>
       </section>
 
       <section class="spotlight-grid">
@@ -102,6 +116,26 @@
             Full safeguard rules are maintained in Markdown and auto-published to a formatted page.
           </p>
           <a href="data-safeguards.html">Open Full Safeguards</a>
+        </article>
+      </section>
+
+      <section class="spotlight-grid">
+        <article class="card spotlight reveal delay-1">
+          <h2>Before Every Commit</h2>
+          <ul class="clean-list">
+            <li>Redact screenshots for names, emails, case IDs, and any PII</li>
+            <li>Confirm no production records, secrets, or internal endpoints</li>
+            <li>Use only dummy datasets and anonymized schema references</li>
+          </ul>
+        </article>
+        <article class="card spotlight reveal delay-2">
+          <h2>If Sensitive Data Is Found</h2>
+          <ul class="clean-list">
+            <li>Notify the team immediately and stop distribution</li>
+            <li>Purge from git history, not just latest commit</li>
+            <li>Rotate exposed credentials and re-verify repository state</li>
+          </ul>
+          <a href="data-safeguards.html">View Full Incident Guidance</a>
         </article>
       </section>
     </main>

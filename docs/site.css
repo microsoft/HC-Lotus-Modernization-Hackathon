@@ -1,14 +1,15 @@
 :root {
-  --bg: #f4f2ea;
-  --bg-alt: #ece7da;
-  --text: #1e2527;
-  --muted: #4a5a5e;
-  --line: #d3ccbb;
-  --brand: #0d8a78;
-  --brand-strong: #0a6a5c;
-  --brand-soft: #dff4ef;
-  --card: rgba(255, 255, 255, 0.72);
-  --shadow: 0 12px 34px rgba(30, 37, 39, 0.12);
+  --bg: #f6f8fb;
+  --bg-alt: #e9eef6;
+  --text: #152234;
+  --muted: #42556c;
+  --line: #c8d4e4;
+  --brand: #0f6fa8;
+  --brand-strong: #0f4b89;
+  --brand-soft: #ddecfb;
+  --accent: #f18f3b;
+  --card: rgba(255, 255, 255, 0.82);
+  --shadow: 0 14px 36px rgba(21, 34, 52, 0.12);
 }
 
 * {
@@ -18,11 +19,12 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-family: "Manrope", "Segoe UI", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(90rem 40rem at -20% -20%, #f8c98a 0%, transparent 60%),
-    radial-gradient(70rem 30rem at 120% 10%, #9ed3cb 0%, transparent 55%),
+    radial-gradient(80rem 34rem at -10% -15%, #ffd9b2 0%, transparent 56%),
+    radial-gradient(74rem 32rem at 110% 2%, #cbe4fb 0%, transparent 58%),
+    radial-gradient(56rem 22rem at 50% 110%, #d8f0ea 0%, transparent 55%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
 }
 
@@ -32,8 +34,8 @@ body {
   z-index: -1;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(30, 37, 39, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(30, 37, 39, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(15, 75, 137, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 75, 137, 0.06) 1px, transparent 1px);
   background-size: 44px 44px;
   mask-image: radial-gradient(circle at 50% 30%, black 35%, transparent 85%);
 }
@@ -51,15 +53,17 @@ body {
   align-items: center;
   justify-content: space-between;
   width: min(1100px, calc(100% - 2rem));
-  margin: 0.7rem auto 0;
+  margin: 0.75rem auto 0;
   padding: 0.85rem 1rem;
   border: 1px solid var(--line);
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(6px);
+  box-shadow: 0 8px 24px rgba(18, 36, 66, 0.08);
 }
 
 .brand {
+  font-family: "Sora", "Manrope", sans-serif;
   font-weight: 700;
   letter-spacing: 0.03em;
   text-decoration: none;
@@ -77,12 +81,13 @@ nav a {
   padding: 0.4rem 0.7rem;
   border-radius: 999px;
   border: 1px solid transparent;
+  font-weight: 600;
 }
 
 nav a:hover,
 nav a[aria-current="page"] {
   border-color: var(--line);
-  background: rgba(13, 138, 120, 0.1);
+  background: linear-gradient(135deg, rgba(15, 111, 168, 0.16), rgba(241, 143, 59, 0.14));
 }
 
 .hero-layout {
@@ -97,7 +102,8 @@ nav a[aria-current="page"] {
 .card,
 .timeline-item,
 .app-card,
-.page-head {
+.page-head,
+.doc-content {
   border: 1px solid var(--line);
   border-radius: 18px;
   background: var(--card);
@@ -120,14 +126,22 @@ nav a[aria-current="page"] {
 }
 
 h1 {
+  font-family: "Sora", "Manrope", sans-serif;
   margin: 0.4rem 0 0.8rem;
   font-size: clamp(1.8rem, 4vw, 3.2rem);
   line-height: 1.06;
 }
 
 h2 {
+  font-family: "Sora", "Manrope", sans-serif;
   margin: 0;
   font-size: clamp(1.2rem, 2.6vw, 1.7rem);
+}
+
+.card h3,
+.app-card h3,
+.doc-content h3 {
+  font-family: "Sora", "Manrope", sans-serif;
 }
 
 .hero p,
@@ -153,9 +167,9 @@ h2 {
 .metrics article {
   border: 1px solid var(--line);
   border-radius: 14px;
-  background: var(--card);
   box-shadow: var(--shadow);
   padding: 0.9rem;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(221, 236, 251, 0.6));
 }
 
 .metric-value {
@@ -180,6 +194,7 @@ h2 {
 
 .spotlight {
   padding: 1.1rem;
+  border-top: 3px solid rgba(15, 111, 168, 0.25);
 }
 
 .spotlight p {
@@ -194,6 +209,10 @@ h2 {
   margin-bottom: 0.9rem;
 }
 
+.exec-head p {
+  max-width: 100%;
+}
+
 .exec-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -202,6 +221,7 @@ h2 {
 
 .exec-card {
   padding: 1rem;
+  border-top: 3px solid rgba(241, 143, 59, 0.35);
 }
 
 .exec-stat {
@@ -239,7 +259,7 @@ h2 {
   color: var(--text);
   border-radius: 999px;
   padding: 0.58rem 0.98rem;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.78);
   font-weight: 600;
 }
 
@@ -248,7 +268,7 @@ h2 {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+  background: linear-gradient(135deg, var(--brand), var(--brand-strong) 70%, #0f4b89 100%);
   border-color: transparent;
   color: #f8fcfb;
 }
@@ -279,6 +299,7 @@ h2 {
 
 .section-title {
   margin: 0 0 0.8rem;
+  font-family: "Sora", "Manrope", sans-serif;
 }
 
 .cards,
@@ -307,13 +328,13 @@ h2 {
   border-radius: 999px;
   padding: 0.35rem 0.55rem;
   color: var(--brand-strong);
-  border: 1px solid rgba(13, 138, 120, 0.34);
+  border: 1px solid rgba(15, 111, 168, 0.35);
   background: var(--brand-soft);
   white-space: nowrap;
 }
 
 .app-focus {
-  border-left: 3px solid rgba(13, 138, 120, 0.5);
+  border-left: 3px solid rgba(15, 111, 168, 0.5);
   padding-left: 0.55rem;
 }
 
@@ -333,10 +354,19 @@ h2 {
 }
 
 .card a,
-.app-links a {
+.app-links a,
+.doc-content a {
   color: var(--brand-strong);
   font-weight: 600;
   text-decoration: none;
+}
+
+.exec-card a:hover,
+.card a:hover,
+.app-links a:hover,
+.doc-content a:hover {
+  color: var(--brand);
+  text-decoration: underline;
 }
 
 .app-links {
@@ -357,11 +387,6 @@ h2 {
 }
 
 .doc-content {
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: var(--card);
-  backdrop-filter: blur(4px);
-  box-shadow: var(--shadow);
   padding: 1.2rem;
   margin: 1rem 0;
 }
@@ -376,13 +401,9 @@ h2 {
   line-height: 1.55;
 }
 
-.doc-content a {
-  color: var(--brand-strong);
-}
-
 .doc-content pre {
   overflow: auto;
-  background: rgba(30, 37, 39, 0.06);
+  background: rgba(21, 34, 52, 0.06);
   border: 1px solid var(--line);
   border-radius: 12px;
   padding: 0.8rem;
@@ -406,7 +427,7 @@ h2 {
 }
 
 .doc-content th {
-  background: rgba(13, 138, 120, 0.08);
+  background: rgba(15, 111, 168, 0.12);
 }
 
 .timeline-item {
@@ -421,8 +442,8 @@ h2 {
   font-family: "IBM Plex Mono", monospace;
   font-weight: 600;
   color: var(--brand-strong);
-  background: rgba(13, 138, 120, 0.14);
-  border: 1px solid rgba(13, 138, 120, 0.35);
+  background: rgba(15, 111, 168, 0.14);
+  border: 1px solid rgba(15, 111, 168, 0.35);
   border-radius: 10px;
   min-width: 3rem;
   text-align: center;
@@ -434,6 +455,7 @@ h2 {
   color: var(--muted);
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.84rem;
+  border-top: 1px solid rgba(15, 111, 168, 0.22);
 }
 
 .reveal {
