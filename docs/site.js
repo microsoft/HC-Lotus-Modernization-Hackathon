@@ -1,7 +1,7 @@
 const appTracks = [
   {
     name: "Phase 1: Discover",
-    status: "AI Synthesize + Human Verify",
+    status: "AI synth + human verify",
     focus: "Capture legacy workflows, constraints, and data boundaries to establish modernization context.",
     summary: "Creates a reliable foundation that improves quality and reduces downstream rework.",
     outputs: ["Context package", "Workflow inventory", "Validated baseline"],
@@ -12,7 +12,7 @@ const appTracks = [
   },
   {
     name: "Phase 2: Define",
-    status: "AI Draft + Human Prioritize",
+    status: "AI draft + human prioritize",
     focus: "Translate business intent into target architecture, implementation slices, and quality criteria.",
     summary: "Standardizes how teams move from documentation into executable modernization plans.",
     outputs: ["Prioritized requirements", "User stories", "Acceptance criteria"],
@@ -23,7 +23,7 @@ const appTracks = [
   },
   {
     name: "Phase 3: Plan",
-    status: "AI Propose + Human Decide",
+    status: "AI propose + human decide",
     focus: "Define architecture, migration sequencing, and implementation boundaries before coding begins.",
     summary: "Creates an executable modernization plan that balances speed, risk, and maintainability.",
     outputs: ["Target architecture", "Conversion sequence", "Risk controls"],
@@ -34,7 +34,7 @@ const appTracks = [
   },
   {
     name: "Phase 4: Execute",
-    status: "AI Build + Human Assure",
+    status: "AI build + human assure",
     focus: "Implement modernization increments using AI-assisted coding with mandatory human review checkpoints.",
     summary: "Accelerates delivery while preserving governance, maintainability, and engineering standards.",
     outputs: ["Refactored modules", "Validation tests", "Reusable AI prompt patterns"],

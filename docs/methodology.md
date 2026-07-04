@@ -1,8 +1,8 @@
-# Methodology: AI-Assisted Lotus Notes Modernization
+# Methodology: AI-Assisted Legacy Application Modernization
 
 ## Overview
 
-This document describes our four-phase approach to modernizing Lotus Notes applications using GitHub Copilot and AI-assisted development. Each phase builds on the previous one, with AI accelerating every step.
+This document describes our four-phase approach to modernizing legacy applications using GitHub Copilot and AI-assisted development. Each phase builds on the previous one, with AI accelerating execution and DTB teams validating quality.
 
 ---
 

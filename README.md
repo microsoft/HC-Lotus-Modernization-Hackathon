@@ -1,6 +1,6 @@
-# 🪷 White Lotus: The Great Modernization
+# 🪷 LotusLift Modernization Enablement
 
-**Health Canada Hackathon — Lotus Notes to Modern Tech**
+**Health Canada Hackathon — Legacy Applications to Modern Delivery**
 
 A collaborative hackathon between Microsoft and Health Canada's DTB developers to modernize four Lotus Notes applications into modern technologies using GitHub Copilot and AI-assisted development.
 
@@ -84,7 +84,7 @@ See [docs/data-safeguards.md](docs/data-safeguards.md) for full details.
 A ready-to-publish multi-page site is included in `docs/`:
 
 - `docs/index.html` — project landing page
-- `docs/apps.html` — app modernization hub
+- `docs/workstreams.html` — delivery workstreams hub
 - `docs/method.html` — methodology timeline
 - `docs/safeguards.html` — security and data safeguards guide
 

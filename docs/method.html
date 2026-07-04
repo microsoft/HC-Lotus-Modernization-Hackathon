@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Method Timeline | LotusLift</title>
-    <meta name="description" content="Four-phase AI-assisted methodology for Lotus Notes modernization." />
+    <title>Method And Playbook | LotusLift</title>
+    <meta name="description" content="Four-phase AI-assisted modernization method with executive summary and detailed execution playbook." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,7 +21,7 @@
       <nav>
         <a href="index.html">Home</a>
         <a href="method.html" aria-current="page">Method</a>
-        <a href="apps.html">Workstreams</a>
+        <a href="workstreams.html">Workstreams</a>
         <a href="security.html">Security</a>
         <a href="copilot-tips.html">Tips</a>
       </nav>
@@ -151,20 +151,127 @@
       <section class="method-divider reveal" aria-label="Full methodology divider">
         <p class="eyebrow">Detailed Reference</p>
         <h2>Full Methodology</h2>
-        <p>The embedded reference below contains the complete step-by-step methodology, prompts, and time allocation.</p>
+        <p>The detailed execution guide below extends the same method with inputs, steps, outputs, prompting patterns, and timeline.</p>
       </section>
 
-      <section class="method-embed reveal delay-1" aria-label="Embedded full methodology">
-        <iframe src="methodology.html" title="Full Methodology"></iframe>
+      <section class="doc-content reveal delay-1" aria-label="Full methodology details">
+        <h2>Detailed Methodology</h2>
         <p>
-          Prefer a dedicated page?
-          <a class="btn btn-primary" href="methodology.html">Open Full Methodology</a>
+          This is the full execution playbook used by the team. It preserves the same four phases while making ownership,
+          deliverables, and quality gates explicit.
+        </p>
+
+        <h3>Phase 1: Discover And Frame</h3>
+        <p><strong>Goal:</strong> capture enough legacy context for accurate modernization planning.</p>
+        <p><strong>Inputs:</strong> anonymized screenshots, schema metadata, business rules, and user-role context.</p>
+        <p><strong>Process:</strong></p>
+        <ol>
+          <li>Collect and organize approved discovery artifacts.</li>
+          <li>Use AI to draft structured documentation and workflow narratives.</li>
+          <li>Run DTB review to correct assumptions and confirm fidelity.</li>
+        </ol>
+        <p><strong>Outputs:</strong> validated context package, workflow inventory, and baseline constraints.</p>
+
+        <h3>Phase 2: Define Requirements</h3>
+        <p><strong>Goal:</strong> translate discovery into implementation-ready requirements.</p>
+        <p><strong>Process:</strong></p>
+        <ol>
+          <li>Generate draft functional requirements and user stories with AI.</li>
+          <li>Prioritize scope with DTB stakeholders.</li>
+          <li>Define non-functional expectations and acceptance criteria.</li>
+        </ol>
+        <p><strong>Outputs:</strong> prioritized requirements, user stories, and acceptance criteria.</p>
+
+        <h3>Phase 3: Plan Conversion</h3>
+        <p><strong>Goal:</strong> establish architecture, sequencing, and risk controls before coding.</p>
+        <p><strong>Process:</strong></p>
+        <ol>
+          <li>Use AI to propose architecture options and conversion slices.</li>
+          <li>Finalize technical decisions and migration sequencing with DTB leads.</li>
+          <li>Define guardrails for data handling, quality, and release readiness.</li>
+        </ol>
+        <p><strong>Outputs:</strong> target architecture, conversion sequence, and risk-control plan.</p>
+
+        <h3>Phase 4: Execute And Assure</h3>
+        <p><strong>Goal:</strong> deliver modernization increments quickly without sacrificing quality.</p>
+        <p><strong>Process:</strong></p>
+        <ol>
+          <li>Generate implementation increments using AI-assisted coding.</li>
+          <li>Apply DTB-led reviews for correctness, maintainability, and security.</li>
+          <li>Iterate with tests, refactoring, and documentation updates.</li>
+        </ol>
+        <p><strong>Outputs:</strong> working modernization increments, tests, and reusable delivery patterns.</p>
+
+        <h3>Prompting Patterns By Phase</h3>
+        <ul>
+          <li><strong>Discover:</strong> summarize fields, entities, workflows, and validation assumptions from inputs.</li>
+          <li><strong>Define:</strong> generate user stories and traceable acceptance criteria tied to business outcomes.</li>
+          <li><strong>Plan:</strong> propose architecture alternatives and phased conversion plans with tradeoffs.</li>
+          <li><strong>Execute:</strong> generate code/tests, then review/refine against quality and security controls.</li>
+        </ul>
+
+        <h3>Hackathon Timebox (7 Hours)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Phase</th>
+              <th>Activity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>9:00-9:30</td>
+              <td>Setup</td>
+              <td>Introductions, environment readiness, and scope alignment</td>
+            </tr>
+            <tr>
+              <td>9:30-10:30</td>
+              <td>Phase 1</td>
+              <td>Discovery capture and documentation synthesis</td>
+            </tr>
+            <tr>
+              <td>10:30-11:00</td>
+              <td>Phase 2</td>
+              <td>Requirements definition and prioritization</td>
+            </tr>
+            <tr>
+              <td>11:00-11:30</td>
+              <td>Phase 3</td>
+              <td>Conversion planning and architecture decisions</td>
+            </tr>
+            <tr>
+              <td>11:30-12:00</td>
+              <td>Break</td>
+              <td>Lunch</td>
+            </tr>
+            <tr>
+              <td>12:00-3:00</td>
+              <td>Phase 4</td>
+              <td>Execution sprint with AI-assisted coding and reviews</td>
+            </tr>
+            <tr>
+              <td>3:00-3:30</td>
+              <td>Demo</td>
+              <td>Working increment walkthrough and outcomes review</td>
+            </tr>
+            <tr>
+              <td>3:30-4:00</td>
+              <td>Wrap-up</td>
+              <td>Lessons learned, next steps, and enablement handoff</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          Need the markdown source version?
+          <a class="btn" href="methodology.html">Open Generated Methodology Page</a>
         </p>
       </section>
     </main>
 
     <footer class="layout footer">
-      <p>Repeatable by design: discover, define, design, deliver.</p>
+      <p>Repeatable by design: discover, define, plan, execute.</p>
     </footer>
 
     <script src="site.js"></script>
