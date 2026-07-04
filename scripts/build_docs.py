@@ -46,8 +46,8 @@ def render_page(title: str, body_html: str) -> str:
       <a class=\"brand\" href=\"index.html\">LotusLift</a>
       <nav>
         <a href=\"index.html\">Home</a>
-        <a href=\"apps.html\">Workstreams</a>
         <a href=\"method.html\">Method</a>
+        <a href=\"apps.html\">Workstreams</a>
         <a href=\"security.html\">Security</a>
         <a href=\"copilot-tips.html\">Tips</a>
       </nav>

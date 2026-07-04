@@ -73,6 +73,7 @@ body {
 nav {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 nav a {
@@ -307,11 +308,18 @@ h2 {
   display: grid;
   gap: 0.9rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
 }
 
 .card,
 .app-card {
   padding: 1rem;
+}
+
+.app-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
 .app-card-head {
@@ -345,6 +353,7 @@ h2 {
 
 .app-output-list {
   margin-top: 0;
+  margin-bottom: 0.4rem;
 }
 
 .card p,
@@ -373,7 +382,9 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 0.8rem;
-  margin-top: 0.8rem;
+  margin-top: auto;
+  padding-top: 0.7rem;
+  border-top: 1px dashed var(--line);
 }
 
 .page-head {
@@ -436,6 +447,55 @@ h2 {
   gap: 0.8rem;
   padding: 1rem;
   align-items: start;
+}
+
+.role-blocks {
+  margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+}
+
+.role-block {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 0.7rem;
+}
+
+.role-label {
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--brand-strong);
+}
+
+.method-divider {
+  margin: 1.3rem 0 0.8rem;
+  padding-top: 1rem;
+  border-top: 2px dashed rgba(15, 111, 168, 0.36);
+}
+
+.method-embed {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  padding: 0.9rem;
+}
+
+.method-embed iframe {
+  width: 100%;
+  min-height: 620px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.method-embed p {
+  margin-top: 0.9rem;
 }
 
 .phase-id {
@@ -506,6 +566,10 @@ h2 {
   .metrics,
   .spotlight-grid,
   .exec-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .role-blocks {
     grid-template-columns: 1fr;
   }
 

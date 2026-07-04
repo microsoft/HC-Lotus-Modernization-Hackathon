@@ -20,8 +20,8 @@
       <a class="brand" href="index.html">LotusLift</a>
       <nav>
         <a href="index.html">Home</a>
-        <a href="apps.html">Workstreams</a>
         <a href="method.html" aria-current="page">Method</a>
+        <a href="apps.html">Workstreams</a>
         <a href="security.html">Security</a>
         <a href="copilot-tips.html">Tips</a>
       </nav>
@@ -54,38 +54,112 @@
       </section>
 
       <section class="timeline" aria-label="Method timeline">
-        <article class="timeline-item reveal delay-1">
+        <article class="timeline-item reveal delay-1" id="phase-discovery">
           <span class="phase-id">01</span>
           <div>
-            <h2>Document</h2>
-            <p>Capture screenshots, schema, and business workflows in a structured way for AI context.</p>
+            <h2>Discover And Frame</h2>
+            <p>Establish modernization context by capturing workflows, schemas, and operating constraints.</p>
+            <div class="role-blocks">
+              <div class="role-block">
+                <p class="role-label">AI Does</p>
+                <ul class="clean-list">
+                  <li>Structure and summarize captured artifacts</li>
+                  <li>Draft workflow and data model narratives</li>
+                </ul>
+              </div>
+              <div class="role-block">
+                <p class="role-label">DTB Team Does</p>
+                <ul class="clean-list">
+                  <li>Provide source context and business nuances</li>
+                  <li>Validate and correct generated documentation</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </article>
-        <article class="timeline-item reveal delay-2">
+        <article class="timeline-item reveal delay-2" id="phase-requirements">
           <span class="phase-id">02</span>
           <div>
             <h2>Requirements</h2>
-            <p>Generate functional scope, user stories, and non-functional expectations for the new app.</p>
+            <p>Convert discovery outputs into functional scope, user stories, and measurable quality expectations.</p>
+            <div class="role-blocks">
+              <div class="role-block">
+                <p class="role-label">AI Does</p>
+                <ul class="clean-list">
+                  <li>Generate draft requirements and user stories</li>
+                  <li>Propose non-functional criteria and acceptance checks</li>
+                </ul>
+              </div>
+              <div class="role-block">
+                <p class="role-label">DTB Team Does</p>
+                <ul class="clean-list">
+                  <li>Review, edit, and prioritize requirements</li>
+                  <li>Confirm alignment to operational realities</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </article>
-        <article class="timeline-item reveal delay-3">
+        <article class="timeline-item reveal delay-3" id="phase-plan">
           <span class="phase-id">03</span>
           <div>
             <h2>Conversion Plan</h2>
-            <p>Define architecture, data model mapping, API boundaries, and implementation sequence.</p>
+            <p>Define architecture, migration sequencing, and implementation slices for controlled delivery.</p>
+            <div class="role-blocks">
+              <div class="role-block">
+                <p class="role-label">AI Does</p>
+                <ul class="clean-list">
+                  <li>Draft target architecture and migration sequencing</li>
+                  <li>Generate conversion-plan options and technical scaffolds</li>
+                </ul>
+              </div>
+              <div class="role-block">
+                <p class="role-label">DTB Team Does</p>
+                <ul class="clean-list">
+                  <li>Select tradeoffs and finalize architecture decisions</li>
+                  <li>Approve phased rollout and risk controls</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </article>
-        <article class="timeline-item reveal delay-3">
+        <article class="timeline-item reveal delay-3" id="phase-execute">
           <span class="phase-id">04</span>
           <div>
             <h2>Execute</h2>
-            <p>Use Copilot for accelerated coding, tests, and iteration while humans validate every output.</p>
+            <p>Ship modernization increments through AI-assisted build cycles with mandatory human quality gates.</p>
+            <div class="role-blocks">
+              <div class="role-block">
+                <p class="role-label">AI Does</p>
+                <ul class="clean-list">
+                  <li>Generate code, tests, and refactoring suggestions</li>
+                  <li>Assist with debugging and iteration acceleration</li>
+                </ul>
+              </div>
+              <div class="role-block">
+                <p class="role-label">DTB Team Does</p>
+                <ul class="clean-list">
+                  <li>Validate correctness, security, and maintainability</li>
+                  <li>Own final code quality and production readiness</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </article>
       </section>
 
-      <section class="reveal">
-        <a class="btn btn-primary" href="methodology.html">Open Full Methodology</a>
+      <section class="method-divider reveal" aria-label="Full methodology divider">
+        <p class="eyebrow">Detailed Reference</p>
+        <h2>Full Methodology</h2>
+        <p>The embedded reference below contains the complete step-by-step methodology, prompts, and time allocation.</p>
+      </section>
+
+      <section class="method-embed reveal delay-1" aria-label="Embedded full methodology">
+        <iframe src="methodology.html" title="Full Methodology"></iframe>
+        <p>
+          Prefer a dedicated page?
+          <a class="btn btn-primary" href="methodology.html">Open Full Methodology</a>
+        </p>
       </section>
     </main>
 
