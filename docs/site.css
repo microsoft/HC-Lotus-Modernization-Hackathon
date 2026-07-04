@@ -226,6 +226,59 @@ h2 {
   gap: 0.8rem;
 }
 
+.doc-content {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+  backdrop-filter: blur(4px);
+  box-shadow: var(--shadow);
+  padding: 1.2rem;
+  margin: 1rem 0;
+}
+
+.doc-content > :first-child {
+  margin-top: 0;
+}
+
+.doc-content p,
+.doc-content li {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.doc-content a {
+  color: var(--brand-strong);
+}
+
+.doc-content pre {
+  overflow: auto;
+  background: rgba(30, 37, 39, 0.06);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.8rem;
+}
+
+.doc-content code {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.doc-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.doc-content th,
+.doc-content td {
+  border: 1px solid var(--line);
+  text-align: left;
+  padding: 0.45rem 0.55rem;
+}
+
+.doc-content th {
+  background: rgba(13, 138, 120, 0.08);
+}
+
 .timeline-item {
   display: grid;
   grid-template-columns: auto 1fr;

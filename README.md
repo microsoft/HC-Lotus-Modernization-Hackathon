@@ -35,7 +35,7 @@ See [docs/methodology.md](docs/methodology.md) for the full workflow.
 - ✅ Only anonymized screenshots, data schemas, and dummy data are permitted
 - ✅ Modernization is based on visual inputs and AI-assisted generation
 
-See [DATA-SAFEGUARDS.md](DATA-SAFEGUARDS.md) for full details.
+See [docs/data-safeguards.md](docs/data-safeguards.md) for full details.
 
 ## 📁 Repository Structure
 
@@ -53,6 +53,7 @@ See [DATA-SAFEGUARDS.md](DATA-SAFEGUARDS.md) for full details.
 ├── App3/                    # Third application (same structure)
 ├── App4/                    # Fourth application (same structure)
 └── docs/                    # Cross-cutting guides and references
+    ├── data-safeguards.md   # Security and data handling rules
     ├── methodology.md       # Our AI-assisted modernization workflow
     └── copilot-tips.md      # GitHub Copilot tips for the team
 ```

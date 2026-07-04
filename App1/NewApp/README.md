@@ -2,7 +2,7 @@
 
 ## ⚠️ REMINDER: No real data in this folder
 
-All test data must be dummy/randomized. No production data. No PII. See [DATA-SAFEGUARDS.md](../../DATA-SAFEGUARDS.md).
+All test data must be dummy/randomized. No production data. No PII. See [DATA-SAFEGUARDS.md](../../docs/data-safeguards.md).
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## ⚠️ REMINDER: No real data in this folder
 
-All screenshots must be anonymized. No production data. No PII. See [DATA-SAFEGUARDS.md](../../DATA-SAFEGUARDS.md).
+All screenshots must be anonymized. No production data. No PII. See [DATA-SAFEGUARDS.md](../../docs/data-safeguards.md).
 
 ---
 
