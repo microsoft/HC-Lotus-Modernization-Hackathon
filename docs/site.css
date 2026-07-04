@@ -311,6 +311,12 @@ h2 {
   align-items: stretch;
 }
 
+.app-grid {
+  margin-top: 1.6rem;
+  padding-top: 1rem;
+  border-top: 2px dashed rgba(15, 111, 168, 0.3);
+}
+
 .card,
 .app-card {
   padding: 1rem;
@@ -483,6 +489,23 @@ h2 {
   margin: 1.3rem 0 0.8rem;
   padding-top: 1rem;
   border-top: 2px dashed rgba(15, 111, 168, 0.36);
+}
+
+.phase-banner {
+  margin-top: 1.35rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(15, 111, 168, 0.14), rgba(241, 143, 59, 0.12));
+  box-shadow: var(--shadow);
+  padding: 1.05rem 1.15rem;
+}
+
+.phase-banner h2 {
+  margin-top: 0.35rem;
+}
+
+.phase-banner p:last-child {
+  margin-bottom: 0;
 }
 
 .phase-id {

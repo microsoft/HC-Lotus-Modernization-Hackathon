@@ -6,7 +6,7 @@
     <title>Security Center | LotusLift</title>
     <meta
       name="description"
-      content="Security center for LotusLift enablement hackathon: safeguards overview and detailed data policy."
+      content="Unified security policy for LotusLift: executive overview first, full data and engineering controls below."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,47 +32,126 @@
 
     <main class="layout">
       <section class="page-head reveal">
-        <p class="eyebrow">Security Center</p>
-        <h1>Security And Data Governance</h1>
+        <p class="eyebrow">Unified Security</p>
+        <h1>Security Overview And Full Policy</h1>
         <p>
-          Central hub for program-level security posture, practical safeguard controls, and detailed data handling policy.
+          One page for leadership and delivery teams: executive security summary at the top, followed by complete controls
+          for data, code, access, and operational practices.
         </p>
       </section>
 
-      <section class="cards reveal delay-1">
-        <article class="card">
-          <h2>Security Overview</h2>
-          <p>
-            High-level controls, governance model, and operational checks for day-to-day execution and leadership review.
-          </p>
-          <a href="safeguards.html">Open Security Overview</a>
+      <section class="spotlight-grid reveal delay-1">
+        <article class="card spotlight">
+          <h2>Executive Summary</h2>
+          <ul class="clean-list">
+            <li>No private, protected, or production data in this repository</li>
+            <li>Human review is mandatory before every commit and merge</li>
+            <li>Security covers more than data: identity, code quality, and operations</li>
+          </ul>
         </article>
-        <article class="card">
-          <h2>Data Safeguards Policy</h2>
+        <article class="card spotlight">
+          <h2>Control Intent</h2>
           <p>
-            Full policy text with allowed/prohibited content rules, commit checklist, and response guidance.
+            Keep modernization velocity high while preventing data leakage, unsafe code promotion, and accidental
+            exposure of sensitive enterprise details.
           </p>
-          <a href="data-safeguards.html">Open Data Safeguards Policy</a>
         </article>
       </section>
 
-      <section class="spotlight-grid">
-        <article class="card spotlight reveal delay-2">
-          <h2>Core Guardrails</h2>
+      <section class="method-divider reveal delay-2" aria-label="Security policy divider">
+        <p class="eyebrow">Detailed Controls</p>
+        <h2>Full Security Policy</h2>
+        <p>Everything below is the operational policy teams follow during this enablement hackathon.</p>
+      </section>
+
+      <section class="cards reveal delay-2">
+        <article class="card">
+          <h3>Data Handling Rules</h3>
           <ul class="clean-list">
-            <li>No private, protected, or production data in this repository</li>
-            <li>Only anonymized screenshots and dummy datasets are allowed</li>
-            <li>Human review required before every commit and merge</li>
+            <li>Allowed: anonymized screenshots, schema metadata, and dummy/randomized data</li>
+            <li>Prohibited: production exports, personal identifiers, credentials, internal endpoints/IPs</li>
+            <li>All screenshots must be redacted before commit</li>
           </ul>
         </article>
-        <article class="card spotlight reveal delay-3">
-          <h2>Why It Matters</h2>
-          <p>
-            Strong safeguards protect trust while letting DTB teams move faster with AI-assisted modernization and reduced
-            technical debt.
-          </p>
-          <a href="method.html">See Delivery Method</a>
+        <article class="card">
+          <h3>Identity And Access Controls</h3>
+          <ul class="clean-list">
+            <li>Least-privilege access for repository and deployment roles</li>
+            <li>No shared credentials; no secrets in code, docs, or screenshots</li>
+            <li>Rotate and revoke immediately if exposure is suspected</li>
+          </ul>
         </article>
+        <article class="card">
+          <h3>Code And Supply Chain Controls</h3>
+          <ul class="clean-list">
+            <li>Human-reviewed AI output only; no blind copy-and-merge</li>
+            <li>Dependency and license checks before promotion</li>
+            <li>Favor maintainable patterns over one-off generated code</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="timeline" aria-label="Security execution checklist">
+        <article class="timeline-item reveal delay-1">
+          <span class="phase-id">01</span>
+          <div>
+            <h2>Pre-Commit Review</h2>
+            <p>Verify no sensitive data, secrets, internal infrastructure details, or unredacted screenshots are staged.</p>
+          </div>
+        </article>
+        <article class="timeline-item reveal delay-2">
+          <span class="phase-id">02</span>
+          <div>
+            <h2>Quality And Safety Gate</h2>
+            <p>Confirm generated code is correct, secure, test-backed, and aligned to team coding standards.</p>
+          </div>
+        </article>
+        <article class="timeline-item reveal delay-3">
+          <span class="phase-id">03</span>
+          <div>
+            <h2>Response Process</h2>
+            <p>If sensitive content is found: notify owners immediately, remove exposure from history, rotate credentials,
+              and document corrective action.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="doc-content reveal delay-2" aria-label="Detailed data policy">
+        <h2>Detailed Data Policy</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Allowed</th>
+              <th>Not Allowed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Application Artifacts</td>
+              <td>Anonymized screenshots and workflow descriptions</td>
+              <td>Unredacted screens containing names, emails, IDs, or case details</td>
+            </tr>
+            <tr>
+              <td>Data Content</td>
+              <td>Dummy datasets and synthetic records</td>
+              <td>Production or user-originated records</td>
+            </tr>
+            <tr>
+              <td>Infrastructure Details</td>
+              <td>Generic architecture patterns</td>
+              <td>Internal hostnames, IP ranges, tenant secrets, private endpoints</td>
+            </tr>
+            <tr>
+              <td>Credentials</td>
+              <td>Secret placeholders and mocked values</td>
+              <td>API keys, passwords, tokens, or live certificates</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          This consolidated page is the source of truth for security execution in this repository.
+        </p>
       </section>
     </main>
 

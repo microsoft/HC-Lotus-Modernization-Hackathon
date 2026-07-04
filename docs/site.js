@@ -7,7 +7,7 @@ const appTracks = [
     outputs: ["Context package", "Workflow inventory", "Validated baseline"],
     links: [
       { label: "Method Phase", href: "method.html#phase-discovery" },
-      { label: "Data Controls", href: "security.html" },
+      { label: "Detailed Method", href: "methodology.html" },
     ],
   },
   {
@@ -40,7 +40,7 @@ const appTracks = [
     outputs: ["Refactored modules", "Validation tests", "Reusable AI prompt patterns"],
     links: [
       { label: "Method Phase", href: "method.html#phase-execute" },
-      { label: "Security Checks", href: "safeguards.html" },
+      { label: "Execution Guide", href: "methodology.html" },
     ],
   },
 ];
