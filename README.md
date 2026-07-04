@@ -85,6 +85,7 @@ A ready-to-publish multi-page site is included in `docs/`:
 - `docs/index.html` — project landing page
 - `docs/apps.html` — app modernization hub
 - `docs/method.html` — methodology timeline
+- `docs/safeguards.html` — security and data safeguards guide
 
 ### Enable Pages
 

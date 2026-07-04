@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Data Safeguards | White Lotus</title>
+    <meta name="description" content="Security and data safeguards for the White Lotus modernization hackathon." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <div class="background-grid" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="index.html">White Lotus</a>
+      <nav>
+        <a href="apps.html">Apps</a>
+        <a href="method.html">Method</a>
+        <a href="safeguards.html" aria-current="page">Safeguards</a>
+        <a href="index.html">Home</a>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <section class="page-head reveal">
+        <p class="eyebrow">Security First</p>
+        <h1>Data Safeguards</h1>
+        <p>
+          This project is dummy-data-only. No private, protected, or production information belongs in this repository.
+        </p>
+      </section>
+
+      <section class="timeline" aria-label="Safeguard rules">
+        <article class="timeline-item reveal delay-1">
+          <span class="phase-id">NO</span>
+          <div>
+            <h2>Never Commit Sensitive Data</h2>
+            <p>No real user data, no production exports, no credentials, and no internal HC infrastructure details.</p>
+          </div>
+        </article>
+        <article class="timeline-item reveal delay-2">
+          <span class="phase-id">ONLY</span>
+          <div>
+            <h2>Use Approved Inputs</h2>
+            <p>Anonymized screenshots, schema metadata, and clearly fake sample data are allowed for build and testing.</p>
+          </div>
+        </article>
+        <article class="timeline-item reveal delay-3">
+          <span class="phase-id">CHECK</span>
+          <div>
+            <h2>Review Before Every Commit</h2>
+            <p>Redact screenshots, remove endpoints, and verify no secrets or PII are present in staged files.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="cards reveal">
+        <article class="card">
+          <h3>Allowed Content</h3>
+          <ul class="clean-list">
+            <li>Anonymized screenshots</li>
+            <li>Field names, types, relationships</li>
+            <li>Dummy or randomized datasets</li>
+            <li>Application code, tests, and architecture docs</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Prohibited Content</h3>
+          <ul class="clean-list">
+            <li>Production database exports</li>
+            <li>Real names, emails, identifiers</li>
+            <li>Internal HC URLs or IPs</li>
+            <li>API keys, passwords, access tokens</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Canonical Policy</h3>
+          <p>
+            Full policy text is maintained in the repository root file for versioned governance.
+          </p>
+          <a href="https://github.com/microsoft/HC-Lotus-Modernization-Hackathon/blob/main/DATA-SAFEGUARDS.md"
+            >Open DATA-SAFEGUARDS.md</a
+          >
+        </article>
+      </section>
+    </main>
+
+    <footer class="layout footer">
+      <p>When in doubt, leave it out.</p>
+    </footer>
+
+    <script src="site.js"></script>
+  </body>
+</html>
