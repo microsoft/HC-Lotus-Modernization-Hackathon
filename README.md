@@ -4,23 +4,6 @@
 
 A collaborative hackathon between Microsoft and Health Canada's DTB developers to modernize four Lotus Notes applications into modern technologies using GitHub Copilot and AI-assisted development.
 
----
-
-## ⚠️ SECURITY & DATA SAFEGUARDS
-
-> **NO private, protected, or production data will be used in this repository.**
-
-- ❌ No production data — only dummy/randomized datasets
-- ❌ No system data will be altered or extracted from HC environments
-- ❌ Existing Lotus Notes systems will NOT be modified or accessed directly
-- ❌ AI tools will NOT access internal Health Canada applications
-- ✅ Only anonymized screenshots, data schemas, and dummy data are permitted
-- ✅ Modernization is based on visual inputs and AI-assisted generation
-
-See [DATA-SAFEGUARDS.md](DATA-SAFEGUARDS.md) for full details.
-
----
-
 ## 🎯 Objectives
 
 1. Partner with HC team(s) to deliver a PoC converting four Lotus Notes applications to modern technologies
@@ -40,6 +23,19 @@ We use AI (GitHub Copilot) at every stage:
 | **4. Execute** | Build the modern application | AI generates code, tests, and infrastructure |
 
 See [docs/methodology.md](docs/methodology.md) for the full workflow.
+
+## ⚠️ SECURITY & DATA SAFEGUARDS
+
+> **NO private, protected, or production data will be used in this repository.**
+
+- ❌ No production data — only dummy/randomized datasets
+- ❌ No system data will be altered or extracted from HC environments
+- ❌ Existing Lotus Notes systems will NOT be modified or accessed directly
+- ❌ AI tools will NOT access internal Health Canada applications
+- ✅ Only anonymized screenshots, data schemas, and dummy data are permitted
+- ✅ Modernization is based on visual inputs and AI-assisted generation
+
+See [DATA-SAFEGUARDS.md](DATA-SAFEGUARDS.md) for full details.
 
 ## 📁 Repository Structure
 
@@ -81,6 +77,32 @@ See [docs/methodology.md](docs/methodology.md) for the full workflow.
 2. Add anonymized screenshots to `LotusApp/screenshots/`
 3. Document the data schema in `LotusApp/data-schema/`
 4. Use Copilot to generate documentation, requirements, and code in `NewApp/`
+
+## 🌐 GitHub Pages (Project Site)
+
+A ready-to-publish multi-page site is included in `docs/`:
+
+- `docs/index.html` — project landing page
+- `docs/apps.html` — app modernization hub
+- `docs/method.html` — methodology timeline
+
+### Enable Pages
+
+1. Push this branch to GitHub
+2. In your repo: **Settings → Pages**
+3. Under **Build and deployment**, choose:
+     - **Source:** GitHub Actions (recommended, workflow included), or
+     - **Deploy from a branch:** `main` + `/docs`
+4. Save and wait for deployment
+
+### Public vs Private Access
+
+- **Public repository:** the Pages site is publicly accessible on the internet.
+- **Private repository:** Pages can be restricted depending on your GitHub plan/org policy.
+    - On GitHub Enterprise/Teams, you can keep the repo private and still host Pages with controlled access.
+    - If your organization disables private Pages, a public site requires a public repo.
+
+Always validate your organization policy before publishing.
 
 ## ✅ What CAN Go In This Repo
 
