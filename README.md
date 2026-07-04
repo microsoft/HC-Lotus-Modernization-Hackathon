@@ -1,4 +1,4 @@
-# 🪷 LotusLift Modernization Enablement
+# 🪷 Project LotusLift Modernization Enablement
 
 **Health Canada Hackathon — Legacy Applications to Modern Delivery**
 
