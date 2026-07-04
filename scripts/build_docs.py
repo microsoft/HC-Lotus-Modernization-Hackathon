@@ -29,7 +29,7 @@ def render_page(title: str, body_html: str) -> str:
   <head>
     <meta charset=\"utf-8\" />
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
-    <title>{escaped_title} | White Lotus</title>
+    <title>{escaped_title} | LotusLift</title>
     <meta name=\"description\" content=\"Generated documentation page for White Lotus hackathon content.\" />
     <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\" />
     <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin />
@@ -43,10 +43,10 @@ def render_page(title: str, body_html: str) -> str:
     <div class=\"background-grid\" aria-hidden=\"true\"></div>
 
     <header class=\"topbar\">
-      <a class=\"brand\" href=\"index.html\">White Lotus</a>
+      <a class=\"brand\" href=\"index.html\">LotusLift</a>
       <nav>
         <a href=\"index.html\">Home</a>
-        <a href=\"apps.html\">Apps</a>
+        <a href=\"apps.html\">Workstreams</a>
         <a href=\"method.html\">Method</a>
         <a href=\"security.html\">Security</a>
         <a href=\"copilot-tips.html\">Tips</a>
