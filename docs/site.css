@@ -201,40 +201,47 @@ h2 {
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto;
   column-gap: 0.75rem;
-  row-gap: 0.15rem;
-  align-items: center;
+  row-gap: 0.1rem;
+  align-items: start;
+  align-content: center;
+  min-height: 5.5rem;
 }
 
 .metric-icon {
   grid-row: 1 / 3;
+  align-self: center;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 14px;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 12px;
   border: 1px solid rgba(15, 111, 168, 0.35);
   background: linear-gradient(145deg, rgba(15, 111, 168, 0.18), rgba(221, 236, 251, 0.6));
   color: var(--brand-strong);
 }
 
 .metric-icon svg {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
 }
 
 .metric-title {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 700;
+  line-height: 1.25;
   color: var(--text);
+  align-self: end;
+}
 }
 
 .metric-label {
   margin: 0;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   line-height: 1.35;
+  align-self: start;
 }
 
 .outcome-target {
