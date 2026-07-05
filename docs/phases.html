@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Execution Phases | Project LotusLift</title>
+    <meta name="description" content="Four execution phases with progressive detail: what happens, who owns what, and how AI assists at each step." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <div class="background-grid" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="index.html">Project LotusLift</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="methodology.html">Operating Methodology</a>
+        <a href="phases.html" aria-current="page">Execution Phases</a>
+        <a href="security.html">Security</a>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <section class="phase-banner reveal" aria-label="Page purpose">
+        <p class="eyebrow">Step-By-Step Execution</p>
+        <h1>Execution Phases</h1>
+        <p>
+          Four phases from discovery to delivery. Expand each phase to see ownership, outputs, AI responsibilities,
+          and practical prompting examples.
+        </p>
+      </section>
+
+      <section class="spotlight-grid">
+        <article class="card spotlight reveal delay-1">
+          <h2>How To Read This Page</h2>
+          <ul class="clean-list">
+            <li>Each phase is expandable — click to reveal more detail</li>
+            <li>First level: what happens and who owns what</li>
+            <li>Second level: prompts, examples, and time allocation</li>
+          </ul>
+        </article>
+        <article class="card spotlight reveal delay-2">
+          <h2>Execution Guarantee</h2>
+          <p>
+            AI accelerates every phase but never makes a final decision. Human review gates ensure quality,
+            security, and business alignment at every transition.
+          </p>
+        </article>
+      </section>
+
+      <section class="method-divider reveal delay-2" aria-label="Phases divider">
+        <p class="eyebrow">Progressive Detail</p>
+        <h2>Four Phases, Full Transparency</h2>
+        <p>Expand each phase below to see exactly what happens, who is responsible, and how AI participates.</p>
+      </section>
+
+      <section class="phases-accordion" aria-label="Execution phases">
+
+        <details class="phase-detail reveal delay-1">
+          <summary class="phase-summary">
+            <span class="phase-id">01</span>
+            <div class="phase-summary-text">
+              <h2>Discover And Frame</h2>
+              <p>Capture legacy context: workflows, schemas, constraints, and operating assumptions.</p>
+            </div>
+          </summary>
+          <div class="phase-body">
+            <div class="role-blocks">
+              <div class="role-block">
+                <p class="role-label">AI Does</p>
+                <ul class="clean-list">
+                  <li>Structure and summarize captured artifacts</li>
+                  <li>Draft workflow narratives and data model descriptions</li>
+                  <li>Identify gaps and request clarification</li>
+                </ul>
+              </div>
+              <div class="role-block">
+                <p class="role-label">DTB Team Does</p>
+                <ul class="clean-list">
+                  <li>Provide source context and business nuances</li>
+                  <li>Validate and correct generated documentation</li>
+                  <li>Approve baseline before moving to Phase 2</li>
+                </ul>
+              </div>
+            </div>
+            <div class="phase-outputs">
+              <h3>Outputs</h3>
+              <ul class="clean-list">
+                <li>Validated context package</li>
+                <li>Workflow inventory with decision points</li>
+                <li>Baseline constraints and data boundaries</li>
+              </ul>
+            </div>
+            <details class="phase-deep">
+              <summary class="phase-deep-toggle">Prompts, Examples &amp; Time Allocation</summary>
+              <div class="phase-deep-body">
+                <h4>Example Prompts</h4>
+                <ul class="clean-list">
+                  <li>"Based on these screenshots, document this application's UI, forms, and navigation flow."</li>
+                  <li>"Given this data schema, describe the data model, relationships, and likely validation rules."</li>
+                  <li>"Document the business rules and workflows visible in these screens."</li>
+                </ul>
+                <h4>Time Allocation</h4>
+                <p>Typically 60–90 minutes. Front-loaded with artifact collection, then AI synthesis, then team review.</p>
+                <h4>Quality Gate</h4>
+                <p>DTB team confirms: "This documentation accurately represents our current system." No code begins until this gate passes.</p>
+              </div>
+            </details>
+          </div>
+        </details>
+
+        <details class="phase-detail reveal delay-2">
+          <summary class="phase-summary">
+            <span class="phase-id">02</span>
+            <div class="phase-summary-text">
+              <h2>Define Requirements</h2>
+              <p>Translate discovery into implementation-ready requirements, user stories, and acceptance criteria.</p>
+            </div>
+          </summary>
+          <div class="phase-body">
+            <div class="role-blocks">
+              <div class="role-block">
+                <p class="role-label">AI Does</p>
+                <ul class="clean-list">
+                  <li>Generate draft functional requirements from documentation</li>
+                  <li>Propose user stories in standard format</li>
+                  <li>Suggest non-functional criteria and acceptance checks</li>
+                </ul>
+              </div>
+              <div class="role-block">
+                <p class="role-label">DTB Team Does</p>
+                <ul class="clean-list">
+                  <li>Review, edit, and prioritize generated requirements</li>
+                  <li>Confirm alignment to operational realities</li>
+                  <li>Define what is in-scope vs. future work</li>
+                </ul>
+              </div>
+            </div>
+            <div class="phase-outputs">
+              <h3>Outputs</h3>
+              <ul class="clean-list">
+                <li>Prioritized requirements document</li>
+                <li>User stories with acceptance criteria</li>
+                <li>Scope boundaries (in/out for this engagement)</li>
+              </ul>
+            </div>
+            <details class="phase-deep">
+              <summary class="phase-deep-toggle">Prompts, Examples &amp; Time Allocation</summary>
+              <div class="phase-deep-body">
+                <h4>Example Prompts</h4>
+                <ul class="clean-list">
+                  <li>"Based on this documentation, generate user stories in the format: As a [role], I want to [action], so that [benefit]."</li>
+                  <li>"What are the key functional requirements to replicate this application as a modern web app?"</li>
+                  <li>"Suggest non-functional requirements for performance, accessibility, and security."</li>
+                </ul>
+                <h4>Time Allocation</h4>
+                <p>30–45 minutes. AI generates quickly; team time is spent on prioritization and scope decisions.</p>
+                <h4>Quality Gate</h4>
+                <p>DTB team confirms: "These requirements represent what we need to build." Architecture work begins only after this approval.</p>
+              </div>
+            </details>
+          </div>
+        </details>
+
+        <details class="phase-detail reveal delay-3">
+          <summary class="phase-summary">
+            <span class="phase-id">03</span>
+            <div class="phase-summary-text">
+              <h2>Plan Conversion</h2>
+              <p>Define architecture, migration sequencing, and implementation boundaries before coding begins.</p>
+            </div>
+          </summary>
+          <div class="phase-body">
+            <div class="role-blocks">
+              <div class="role-block">
+                <p class="role-label">AI Does</p>
+                <ul class="clean-list">
+                  <li>Propose target architecture options with tradeoffs</li>
+                  <li>Generate migration sequencing and phased delivery plan</li>
+                  <li>Draft database schema and API boundaries</li>
+                </ul>
+              </div>
+              <div class="role-block">
+                <p class="role-label">DTB Team Does</p>
+                <ul class="clean-list">
+                  <li>Select architecture approach and finalize decisions</li>
+                  <li>Approve phased rollout and risk controls</li>
+                  <li>Generate test data matching approved schema</li>
+                </ul>
+              </div>
+            </div>
+            <div class="phase-outputs">
+              <h3>Outputs</h3>
+              <ul class="clean-list">
+                <li>Target architecture document</li>
+                <li>Ordered conversion plan (build sequence)</li>
+                <li>Dummy/test data for development</li>
+              </ul>
+            </div>
+            <details class="phase-deep">
+              <summary class="phase-deep-toggle">Prompts, Examples &amp; Time Allocation</summary>
+              <div class="phase-deep-body">
+                <h4>Example Prompts</h4>
+                <ul class="clean-list">
+                  <li>"Propose a modern application architecture for these requirements. Include database schema, API design, and component breakdown."</li>
+                  <li>"Generate a SQL schema based on this field definition."</li>
+                  <li>"Create a seed data script with 50 randomized records matching this schema."</li>
+                </ul>
+                <h4>Time Allocation</h4>
+                <p>30–45 minutes. Architecture decisions are the bottleneck — AI proposes fast, team deliberates.</p>
+                <h4>Quality Gate</h4>
+                <p>DTB team confirms: "This architecture and plan are approved for implementation." Coding begins only after this sign-off.</p>
+              </div>
+            </details>
+          </div>
+        </details>
+
+        <details class="phase-detail reveal delay-3">
+          <summary class="phase-summary">
+            <span class="phase-id">04</span>
+            <div class="phase-summary-text">
+              <h2>Execute And Deliver</h2>
+              <p>Build modernization increments with AI-assisted coding and mandatory human review at every merge.</p>
+            </div>
+          </summary>
+          <div class="phase-body">
+            <div class="role-blocks">
+              <div class="role-block">
+                <p class="role-label">AI Does</p>
+                <ul class="clean-list">
+                  <li>Generate code, tests, and infrastructure from the plan</li>
+                  <li>Assist with debugging and iteration acceleration</li>
+                  <li>Suggest refactoring and documentation improvements</li>
+                </ul>
+              </div>
+              <div class="role-block">
+                <p class="role-label">DTB Team Does</p>
+                <ul class="clean-list">
+                  <li>Validate correctness, security, and maintainability</li>
+                  <li>Own final code quality and production readiness</li>
+                  <li>Document decisions and capture reusable patterns</li>
+                </ul>
+              </div>
+            </div>
+            <div class="phase-outputs">
+              <h3>Outputs</h3>
+              <ul class="clean-list">
+                <li>Working application increment</li>
+                <li>Automated tests and validation suite</li>
+                <li>Reusable prompt patterns and delivery playbook</li>
+              </ul>
+            </div>
+            <details class="phase-deep">
+              <summary class="phase-deep-toggle">Prompts, Examples &amp; Time Allocation</summary>
+              <div class="phase-deep-body">
+                <h4>Example Prompts</h4>
+                <ul class="clean-list">
+                  <li>"Generate an Entity Framework model for this database schema."</li>
+                  <li>"Create a REST API controller for CRUD operations on [entity]."</li>
+                  <li>"Build a React component that displays this data in a table with filtering and sorting."</li>
+                  <li>"Write unit tests for this business logic."</li>
+                </ul>
+                <h4>Time Allocation</h4>
+                <p>3+ hours (bulk of engagement). Rapid iteration cycles: AI generates → human reviews → AI refines.</p>
+                <h4>Quality Gate</h4>
+                <p>DTB team confirms: "This increment works, is tested, and meets our standards." Demo-ready output before wrap-up.</p>
+              </div>
+            </details>
+          </div>
+        </details>
+
+      </section>
+
+      <section class="method-divider reveal" aria-label="Timeline divider">
+        <p class="eyebrow">Reference</p>
+        <h2>Hackathon Day Timeline</h2>
+        <p>How these phases map to a typical 7-hour engagement day.</p>
+      </section>
+
+      <section class="doc-content reveal delay-1" aria-label="Timeline table">
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Phase</th>
+              <th>Activity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>9:00–9:30</td>
+              <td>Setup</td>
+              <td>Introductions, environment readiness, scope alignment</td>
+            </tr>
+            <tr>
+              <td>9:30–10:30</td>
+              <td>Phase 1</td>
+              <td>Discovery capture and documentation synthesis</td>
+            </tr>
+            <tr>
+              <td>10:30–11:00</td>
+              <td>Phase 2</td>
+              <td>Requirements definition and prioritization</td>
+            </tr>
+            <tr>
+              <td>11:00–11:30</td>
+              <td>Phase 3</td>
+              <td>Conversion planning and architecture decisions</td>
+            </tr>
+            <tr>
+              <td>11:30–12:00</td>
+              <td>Break</td>
+              <td>Lunch</td>
+            </tr>
+            <tr>
+              <td>12:00–3:00</td>
+              <td>Phase 4</td>
+              <td>Execution sprint with AI-assisted coding and reviews</td>
+            </tr>
+            <tr>
+              <td>3:00–3:30</td>
+              <td>Demo</td>
+              <td>Working increment walkthrough and outcomes review</td>
+            </tr>
+            <tr>
+              <td>3:30–4:00</td>
+              <td>Wrap-up</td>
+              <td>Lessons learned, next steps, enablement handoff</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer class="layout footer">
+      <p>Four phases, full transparency, human control at every gate.</p>
+    </footer>
+
+    <script src="site.js"></script>
+  </body>
+</html>

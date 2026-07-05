@@ -529,8 +529,126 @@ h2 {
   margin-top: 0.35rem;
 }
 
+.phase-banner h1 {
+  margin-top: 0.35rem;
+}
+
 .phase-banner p:last-child {
   margin-bottom: 0;
+}
+
+/* Accordion / collapsible phases */
+.phases-accordion {
+  margin-top: 1.2rem;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.phase-detail {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+  backdrop-filter: blur(4px);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.phase-detail[open] {
+  border-color: rgba(15, 111, 168, 0.4);
+}
+
+.phase-summary {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.8rem;
+  padding: 1rem;
+  align-items: center;
+  cursor: pointer;
+  list-style: none;
+}
+
+.phase-summary::-webkit-details-marker {
+  display: none;
+}
+
+.phase-summary::marker {
+  content: "";
+}
+
+.phase-summary-text h2 {
+  margin: 0;
+}
+
+.phase-summary-text p {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+}
+
+.phase-body {
+  padding: 0 1rem 1.2rem 4.5rem;
+}
+
+.phase-outputs {
+  margin-top: 1rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed var(--line);
+}
+
+.phase-outputs h3 {
+  font-family: "Sora", "Manrope", sans-serif;
+  font-size: 0.95rem;
+  margin: 0 0 0.4rem;
+}
+
+.phase-deep {
+  margin-top: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(15, 111, 168, 0.04);
+}
+
+.phase-deep-toggle {
+  padding: 0.7rem 0.9rem;
+  cursor: pointer;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--brand-strong);
+  letter-spacing: 0.03em;
+  list-style: none;
+}
+
+.phase-deep-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.phase-deep-toggle::marker {
+  content: "";
+}
+
+.phase-deep-toggle::before {
+  content: "▸ ";
+}
+
+.phase-deep[open] .phase-deep-toggle::before {
+  content: "▾ ";
+}
+
+.phase-deep-body {
+  padding: 0 0.9rem 0.9rem;
+}
+
+.phase-deep-body h4 {
+  font-family: "Sora", "Manrope", sans-serif;
+  font-size: 0.88rem;
+  margin: 0.9rem 0 0.3rem;
+  color: var(--text);
+}
+
+.phase-deep-body p {
+  color: var(--muted);
+  margin: 0.3rem 0;
+  line-height: 1.5;
 }
 
 .phase-id {
@@ -606,6 +724,10 @@ h2 {
 
   .role-blocks {
     grid-template-columns: 1fr;
+  }
+
+  .phase-body {
+    padding-left: 1rem;
   }
 
   .topbar {
