@@ -1,122 +1,151 @@
-# GitHub Copilot Tips & Tricks
+# GitHub Copilot Guide for Project LotusLift
 
-Quick reference for the hackathon team on getting the most out of GitHub Copilot.
+Use this guide with `developer-docs/methodology.md` and `developer-docs/data-safeguards.md`.
 
----
-
-## Copilot Modes
-
-| Mode | How to Access | Best For |
-|------|---------------|----------|
-| **Inline Suggestions** | Just start typing | Autocomplete, boilerplate, patterns |
-| **Copilot Chat** | Ctrl+Shift+I (sidebar) | Questions, explanations, planning |
-| **Agent Mode** | `@workspace` in Chat | Multi-file generation, refactoring |
-| **Inline Chat** | Ctrl+I on selected code | Edit specific code blocks |
+Core rule: **AI drafts, humans decide**.
 
 ---
 
-## Key Shortcuts
+## Which Copilot mode to use
+
+| Mode | Best use in this project |
+|---|---|
+| **Inline Suggestions** | Fast boilerplate, repetitive mappings, test setup scaffolding |
+| **Copilot Chat** | Requirement clarification, architecture options, debugging strategy |
+| **Agent / Workspace Context** | Multi-file implementation tasks and refactors spanning `NewApp/` |
+| **Inline Chat** | Focused edits to selected functions/components |
+
+---
+
+## High-value prompting pattern
+
+Use a 5-part structure for better output quality:
+
+1. **Context**: app + phase + relevant files  
+2. **Task**: exact deliverable  
+3. **Constraints**: stack, style, security rules  
+4. **Output shape**: file(s), format, test expectations  
+5. **Acceptance checks**: what must be true when done
+
+Template:
+
+```text
+Context: App2 modernization, Phase 3. Use LotusApp/documentation and NewApp/docs/requirements.md.
+Task: Propose API endpoint set for the top 3 user workflows.
+Constraints: Keep naming consistent with existing models; no production data assumptions.
+Output: Markdown table with endpoint, verb, request schema, response schema, error cases.
+Acceptance: Covers all must-have stories and includes validation rules.
+```
+
+---
+
+## Project-specific prompt library
+
+### Phase 1: Discovery and documentation
+```text
+From these anonymized screenshots and schema notes, produce:
+1) screens and navigation map,
+2) field catalog with inferred types,
+3) business rules inferred from UI behavior,
+4) open questions requiring human confirmation.
+```
+
+### Phase 2: Requirements
+```text
+Using LotusApp/documentation, generate prioritized user stories with acceptance criteria.
+Split into must-have, should-have, and future scope.
+Flag assumptions where requirements are ambiguous.
+```
+
+### Phase 3: Architecture and planning
+```text
+Propose two implementation approaches for NewApp:
+- architecture components
+- API boundaries
+- data model approach
+- tradeoffs and risk controls
+Recommend one approach for hackathon timeline and explain why.
+```
+
+### Phase 4: Implementation
+```text
+Implement [feature] in reviewable steps:
+1) model changes,
+2) endpoint/controller,
+3) UI component integration,
+4) tests.
+After each step, list assumptions and potential follow-ups.
+```
+
+### Review and hardening
+```text
+Review this pull request diff for:
+1) correctness issues,
+2) security risks,
+3) missing test coverage,
+4) maintainability concerns.
+Return findings ordered by severity with concrete fixes.
+```
+
+---
+
+## Prompting anti-patterns to avoid
+
+- "Build the whole app" (too broad)
+- Missing file context (Copilot cannot infer full architecture)
+- No output format requirement (results become hard to reuse)
+- No constraints (naming/security drift)
+- Blind acceptance of generated code
+
+---
+
+## Practical iteration loop
+
+1. Start with a narrow task (one endpoint, one screen, one workflow).
+2. Ask Copilot for first pass.
+3. Review output, then refine with explicit corrections.
+4. Ask Copilot to add tests and edge cases.
+5. Capture reusable prompt patterns in project docs.
+
+This keeps output high quality and merge-ready.
+
+---
+
+## Security-aware prompting reminders
+
+- Never paste sensitive values into prompts.
+- Use synthetic examples (`Example User`, fake IDs, fake emails).
+- Ask Copilot to use placeholders for secrets and environment settings.
+- Treat generated code as untrusted until reviewed.
+
+---
+
+## Fast troubleshooting prompts
+
+```text
+Explain why this test fails using only the error output and this function.
+Propose the minimal fix and show updated test assertions.
+```
+
+```text
+Refactor this method for readability without changing behavior.
+Keep signatures unchanged and preserve current validation logic.
+```
+
+```text
+Generate edge-case tests for null/empty/invalid inputs for this service method.
+Use the existing test framework and naming conventions in this folder.
+```
+
+---
+
+## Keyboard shortcuts
 
 | Action | Windows | Mac |
-|--------|---------|-----|
-| Open Copilot Chat | Ctrl+Shift+I | Cmd+Shift+I |
-| Inline Chat (edit code) | Ctrl+I | Cmd+I |
-| Accept suggestion | Tab | Tab |
-| Reject suggestion | Esc | Esc |
-| Next suggestion | Alt+] | Option+] |
-| Previous suggestion | Alt+[ | Option+[ |
-
----
-
-## Working with Screenshots & Images
-
-Copilot Chat supports image inputs. Drag and drop screenshots directly into the chat:
-
-1. Take an anonymized screenshot of the Lotus Notes form
-2. Drag it into Copilot Chat
-3. Ask: "Describe this application form — list all fields, their types, and the purpose of this screen"
-4. Copilot will analyze the image and generate documentation
-
----
-
-## Effective Prompting Patterns
-
-### Be Specific About Output Format
-```
-❌ "Create a database"
-✅ "Create a PostgreSQL schema with tables for [entities], including primary keys, 
-   foreign keys, and appropriate indexes. Output as a .sql migration file."
-```
-
-### Provide Context
-```
-❌ "Build an API"
-✅ "Based on the data model in @data-schema.md, generate a .NET 8 Web API with 
-   controllers for CRUD operations on each entity. Use Entity Framework Core."
-```
-
-### Use @workspace for Multi-File Context
-```
-"@workspace Looking at the existing app documentation in LotusApp/, 
-generate the equivalent modern API in NewApp/src/"
-```
-
-### Iterate and Refine
-```
-"This is close but the validation rules should also check [X]. Update the model."
-"Add error handling for the case where [Y] is null."
-"Refactor this to use the repository pattern."
-```
-
----
-
-## Copilot for Documentation (Phase 1)
-
-```
-"Analyze this screenshot and document:
-1. What type of form/view is this?
-2. What fields are visible and their likely data types?
-3. What actions/buttons are available?
-4. What business rules can you infer?"
-```
-
-## Copilot for Requirements (Phase 2)
-
-```
-"Given this documentation of an existing application, generate:
-1. A list of functional requirements
-2. User stories in format: As a [role], I want [action], so that [benefit]
-3. Data requirements (what needs to be stored/retrieved)
-4. Non-functional requirements (performance, security, accessibility)"
-```
-
-## Copilot for Architecture (Phase 3)
-
-```
-"Design a modern replacement for this application using .NET 8:
-1. Propose the project structure
-2. Define the database schema (Entity Framework models)
-3. List the API endpoints needed
-4. Suggest the frontend component breakdown
-5. Identify any integration points"
-```
-
-## Copilot for Code Generation (Phase 4)
-
-```
-"Generate the Entity Framework DbContext and entity models based on this schema."
-"Create the API controller for [Entity] with full CRUD + validation."
-"Build a React component that renders this form with the same fields as the Lotus Notes version."
-"Generate seed data with 25 realistic but fake records."
-"Write xUnit tests for the [Service] class covering happy path and edge cases."
-```
-
----
-
-## Common Gotchas
-
-1. **Copilot doesn't have context unless you give it** — Reference files with `@filename` or use `@workspace`
-2. **Long outputs may get truncated** — Ask for one piece at a time if output is cut off
-3. **Validate generated code** — AI is fast but not infallible; review before committing
-4. **Use iterative prompts** — Start broad, then refine with follow-up prompts
-5. **Copilot respects your open files** — Keep relevant files open for better suggestions
+|---|---|---|
+| Open Copilot Chat | `Ctrl+Shift+I` | `Cmd+Shift+I` |
+| Inline Chat | `Ctrl+I` | `Cmd+I` |
+| Accept suggestion | `Tab` | `Tab` |
+| Reject suggestion | `Esc` | `Esc` |
+| Next suggestion | `Alt+]` | `Option+]` |
+| Previous suggestion | `Alt+[` | `Option+[` |

@@ -2,127 +2,98 @@
 
 **Health Canada Hackathon — Legacy Applications to Modern Delivery**
 
-A collaborative hackathon between Microsoft and Health Canada's DTB developers to modernize four Lotus Notes applications into modern technologies using GitHub Copilot and AI-assisted development.
+Project LotusLift is a collaborative initiative between Microsoft and Health Canada DTB developers to modernize four Lotus Notes applications using GitHub Copilot and AI-assisted delivery.
 
 ## 🎯 Objectives
 
-1. Partner with HC team(s) to deliver a PoC converting four Lotus Notes applications to modern technologies
-2. Showcase the capabilities of GitHub Copilot through a real-world Health Canada scenario
-3. Demonstrate and enable developers on the opportunities of AI-assisted coding
-4. Equip DTB developers with knowledge they can share across their teams
+1. Deliver proof-of-concept modern replacements for four Lotus Notes applications.
+2. Demonstrate safe, practical use of AI-assisted engineering in a real HC scenario.
+3. Build internal DTB capability through hands-on execution with reusable patterns.
+4. Produce an operating model that can scale to future modernization efforts.
 
-## 🧠 Methodology
+## 👥 Documentation by Audience
 
-We use AI (GitHub Copilot) at every stage:
+This repository intentionally separates documentation by audience:
 
-| Phase | What We Do | AI Role |
-|-------|-----------|---------|
-| **1. Document** | Capture the existing Lotus Notes app (screenshots, schemas, workflows) | AI summarizes and structures documentation |
-| **2. Requirements** | Define what the modern app needs to do | AI generates requirements from documentation |
-| **3. Plan** | Create a conversion/migration plan | AI proposes architecture and migration steps |
-| **4. Execute** | Build the modern application | AI generates code, tests, and infrastructure |
+| Audience | Location | Purpose |
+|---|---|---|
+| **Executive / Leadership** | `docs/` | Published GitHub Pages site focused on business outcomes, operating model, phases, and security posture. |
+| **Developers / Delivery Teams** | `developer-docs/` | Practical engineering playbooks, implementation guardrails, and Copilot workflows. |
 
-See [docs/methodology.md](docs/methodology.md) for the full workflow.
+## 🌐 Executive Site (GitHub Pages Content)
 
-## ⚠️ SECURITY & DATA SAFEGUARDS
+The executive site lives in `docs/` and currently includes:
 
-> **NO private, protected, or production data will be used in this repository.**
+- `docs/index.html` / `docs/index-fr.html` — Executive landing page
+- `docs/methodology.html` / `docs/methodology-fr.html` — Operating methodology
+- `docs/phases.html` / `docs/phases-fr.html` — Four execution phases and quality gates
+- `docs/security.html` / `docs/security-fr.html` — Unified security policy
 
-- ❌ No production data — only dummy/randomized datasets
-- ❌ No system data will be altered or extracted from HC environments
-- ❌ Existing Lotus Notes systems will NOT be modified or accessed directly
-- ❌ AI tools will NOT access internal Health Canada applications
-- ✅ Only anonymized screenshots, data schemas, and dummy data are permitted
-- ✅ Modernization is based on visual inputs and AI-assisted generation
+## 👩‍💻 Developer Guidance
 
-See [developer-docs/data-safeguards.md](developer-docs/data-safeguards.md) for full details.
+Start with:
+
+- [`developer-docs/methodology.md`](developer-docs/methodology.md) — Developer implementation playbook aligned to the four-phase model
+- [`developer-docs/data-safeguards.md`](developer-docs/data-safeguards.md) — Data, security, and commit-time guardrails
+- [`developer-docs/copilot-tips.md`](developer-docs/copilot-tips.md) — Prompting patterns and Copilot usage guide for this repo
+
+## 🧠 Four-Phase Delivery Model (Shared Across All Docs)
+
+| Phase | Purpose | AI Role | Human Gate |
+|---|---|---|---|
+| **1. Discover & Document** | Capture legacy workflows, schemas, and constraints | Structure and summarize source context | Team validates baseline accuracy |
+| **2. Define Requirements** | Translate discovery into implementation-ready requirements | Draft requirements and user stories | Team approves scope and priorities |
+| **3. Plan Conversion** | Define target architecture and build sequence | Propose architecture and migration steps | Team approves design and rollout plan |
+| **4. Execute & Deliver** | Build working modern increments | Generate/refine code, tests, and docs | Team owns review, quality, and readiness |
+
+## ⚠️ Security & Data Safeguards
+
+> **No private, protected, or production data may be committed to this repository.**
+
+- Allowed: anonymized screenshots, schema metadata, and dummy/synthetic data.
+- Not allowed: production exports, credentials, internal endpoints/IPs, or unredacted screens with personal data.
+- AI output is assistive only; human review is mandatory before commit/merge.
+
+See [`developer-docs/data-safeguards.md`](developer-docs/data-safeguards.md) for full policy details.
 
 ## 📁 Repository Structure
 
-```
+```text
 ├── App1/                    # First Lotus Notes application
-│   ├── LotusApp/            # Documentation of the existing app
-│   │   ├── screenshots/     # Anonymized screenshots
-│   │   ├── data-schema/     # Table/field definitions
-│   │   └── documentation/   # AI-generated docs, workflows, business rules
-│   └── NewApp/              # The modern replacement
-│       ├── src/             # Application source code
-│       ├── dummy-data/      # Randomized test data
-│       └── docs/            # Requirements, architecture, plans
+│   ├── LotusApp/            # Legacy app capture (screenshots/schema/docs)
+│   └── NewApp/              # Modern replacement implementation
 ├── App2/                    # Second application (same structure)
 ├── App3/                    # Third application (same structure)
 ├── App4/                    # Fourth application (same structure)
-├── developer-docs/          # Developer instructions (not published to site)
-│   ├── data-safeguards.md   # Security and data handling rules
-│   ├── methodology.md       # AI-assisted modernization workflow
-│   └── copilot-tips.md      # GitHub Copilot tips for the team
-└── docs/                    # Executive project site (published to GitHub Pages)
+├── docs/                    # Executive project site (GitHub Pages, EN/FR)
+│   ├── index*.html
+│   ├── methodology*.html
+│   ├── phases*.html
+│   └── security*.html
+└── developer-docs/          # Developer-facing markdown playbooks
+    ├── methodology.md
+    ├── data-safeguards.md
+    └── copilot-tips.md
 ```
-
-## 🛠️ Target Technologies
-
-- **Languages:** .NET or Python (per app team preference)
-- **Data:** Modern data store with randomized/dummy datasets
-- **Infra:** Containerization-ready, CI/CD principles
-- **AI Tooling:** GitHub Copilot (Chat, Inline, Agent Mode)
-
-## 📅 Hackathon Day
-
-- **Location:** Onsite in Ottawa (remote participation available)
-- **Team:** 3–6 Health Canada developers + Microsoft team
-- **Time:** 9:00 AM – 4:00 PM (date TBD)
-- **Support:** Microsoft team available throughout for guidance
 
 ## 🚀 Getting Started
 
-1. Pick your app folder (`App1/` through `App4/`)
-2. Add anonymized screenshots to `LotusApp/screenshots/`
-3. Document the data schema in `LotusApp/data-schema/`
-4. Use Copilot to generate documentation, requirements, and code in `NewApp/`
+1. Choose an app folder (`App1/` to `App4/`).
+2. Capture anonymized source artifacts in `LotusApp/`.
+3. Use the developer playbooks in `developer-docs/` to run Phases 1–4.
+4. Build and document the modern implementation in `NewApp/`.
 
-## 🌐 GitHub Pages (Project Site)
+## 📅 Hackathon Reference Window
 
-A ready-to-publish multi-page site is included in `docs/`:
+- **Location:** Ottawa (remote participation available)
+- **Team:** 3–6 Health Canada developers + Microsoft support
+- **Day length:** 9:00 AM – 4:00 PM (plus optional follow-up)
 
-- `docs/index.html` — project landing page
-- `docs/workstreams.html` — delivery workstreams hub
-- `docs/method.html` — methodology and playbook
-- `docs/security.html` — unified security policy
+## 🔧 Enabling GitHub Pages
 
-### Enable Pages
-
-1. Push this branch to GitHub
-2. In your repo: **Settings → Pages**
-3. Under **Build and deployment**, choose:
-     - **Source:** GitHub Actions (recommended, workflow included), or
-     - **Deploy from a branch:** `main` + `/docs`
-4. Save and wait for deployment
-
-### Public vs Private Access
-
-- **Public repository:** the Pages site is publicly accessible on the internet.
-- **Private repository:** Pages can be restricted depending on your GitHub plan/org policy.
-    - On GitHub Enterprise/Teams, you can keep the repo private and still host Pages with controlled access.
-    - If your organization disables private Pages, a public site requires a public repo.
-
-Always validate your organization policy before publishing.
-
-## ✅ What CAN Go In This Repo
-
-| Allowed | Examples |
-|---------|----------|
-| Anonymized screenshots | UI mockups with no real user data visible |
-| Data schemas | Field names, types, relationships (no real values) |
-| Dummy/randomized data | Fake names, generated IDs, lorem ipsum |
-| Code | All application code, configs, tests |
-| Documentation | Workflows, business rules, architecture decisions |
-
-## ❌ What CANNOT Go In This Repo
-
-| Prohibited | Why |
-|------------|-----|
-| Production data | Privacy and security |
-| Real user information | PII protection |
-| System credentials | Security |
-| Internal HC network details | Security |
-| Unredacted screenshots showing real data | Privacy |
+1. Push branch to GitHub.
+2. Go to **Settings → Pages**.
+3. Select either:
+   - **GitHub Actions** (recommended), or
+   - **Deploy from a branch** with `main` and `/docs`.
+4. Save and wait for deployment.
