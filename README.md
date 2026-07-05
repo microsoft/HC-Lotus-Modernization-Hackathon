@@ -89,5 +89,3 @@ See [`developer-docs/data-safeguards.md`](developer-docs/data-safeguards.md) for
 - **Team:** 3–6 Health Canada developers + Microsoft support
 - **Day length:** 9:00 AM – 4:00 PM (plus optional follow-up)
 - **Lunch:** Provided
-
-```
