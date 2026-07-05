@@ -173,17 +173,42 @@ h2 {
   background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(221, 236, 251, 0.6));
 }
 
-.metric-value {
-  margin: 0;
-  font-size: clamp(1.4rem, 3vw, 2.2rem);
-  font-weight: 700;
+.metric-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.45rem;
+  min-height: 165px;
+}
+
+.metric-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.1rem;
+  height: 2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(15, 111, 168, 0.45);
+  background: rgba(15, 111, 168, 0.16);
   color: var(--brand-strong);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.metric-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
 }
 
 .metric-label {
-  margin: 0.25rem 0 0;
+  margin: 0;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
+  line-height: 1.35;
 }
 
 .spotlight-grid {
