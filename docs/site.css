@@ -65,24 +65,29 @@ body {
 .brand {
   font-family: "Sora", "Manrope", sans-serif;
   font-weight: 700;
-  letter-spacing: 0.03em;
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
   text-decoration: none;
-  color: var(--text);
+  color: var(--brand-strong);
+  border-right: 1px solid var(--line);
+  padding-right: 1.1rem;
+  margin-right: 0.4rem;
 }
 
 nav {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
 nav a {
   color: var(--text);
   text-decoration: none;
-  padding: 0.4rem 0.7rem;
+  padding: 0.38rem 0.65rem;
   border-radius: 999px;
   border: 1px solid transparent;
   font-weight: 600;
+  font-size: 0.88rem;
 }
 
 nav a:hover,
@@ -92,14 +97,14 @@ nav a[aria-current="page"] {
 }
 
 .lang-toggle {
-  margin-left: auto;
+  margin-left: 0.6rem;
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.7);
   color: var(--brand-strong);
   font-weight: 600;
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   text-decoration: none;
   white-space: nowrap;
 }
