@@ -189,11 +189,65 @@ h2 {
 }
 
 .metrics article {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   border: 1px solid var(--line);
   border-radius: 14px;
-  box-shadow: var(--shadow);
-  padding: 0.9rem;
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(221, 236, 251, 0.6));
+  box-shadow: 0 16px 34px rgba(21, 34, 52, 0.1);
+  padding: 1rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(241, 246, 252, 0.88)),
+    linear-gradient(160deg, rgba(221, 236, 251, 0.45), rgba(255, 255, 255, 0.92));
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.metrics article::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--metric-accent, var(--brand)), transparent 78%);
+  opacity: 0.95;
+}
+
+.metrics article::after {
+  content: "";
+  position: absolute;
+  top: -2.4rem;
+  right: -2rem;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--metric-accent, var(--brand)) 18%, white) 0%, transparent 68%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.metrics article:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--metric-accent, var(--brand)) 28%, var(--line));
+  box-shadow: 0 22px 40px rgba(21, 34, 52, 0.14);
+}
+
+.metrics article:nth-child(1) {
+  --metric-accent: #0f6fa8;
+}
+
+.metrics article:nth-child(2) {
+  --metric-accent: #228b22;
+}
+
+.metrics article:nth-child(3) {
+  --metric-accent: #7a4ff3;
+}
+
+.metrics article:nth-child(4) {
+  --metric-accent: #f18f3b;
 }
 
 .metric-card {
@@ -207,9 +261,9 @@ h2 {
 .metric-title {
   grid-column: 1 / -1;
   margin: 0 0 0.3rem;
-  padding-bottom: 0.4rem;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--line);
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 700;
   line-height: 1.25;
   color: var(--text);
@@ -222,10 +276,13 @@ h2 {
   justify-content: center;
   width: 2.4rem;
   height: 2.4rem;
-  border-radius: 10px;
-  border: 1px solid rgba(15, 111, 168, 0.35);
-  background: linear-gradient(145deg, rgba(15, 111, 168, 0.18), rgba(221, 236, 251, 0.6));
-  color: var(--brand-strong);
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--metric-accent, var(--brand)) 30%, white);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--metric-accent, var(--brand)) 18%, white), rgba(255, 255, 255, 0.92));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 10px 20px color-mix(in srgb, var(--metric-accent, var(--brand)) 16%, transparent);
+  color: color-mix(in srgb, var(--metric-accent, var(--brand)) 70%, var(--brand-strong));
 }
 
 .metric-icon svg {
@@ -272,12 +329,29 @@ h2 {
 }
 
 .spotlight {
+  display: flex;
+  flex-direction: column;
   padding: 1.1rem;
   border-top: 3px solid rgba(15, 111, 168, 0.25);
 }
 
 .spotlight p {
   color: var(--muted);
+}
+
+.spotlight-note {
+  margin-top: auto;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid rgba(15, 111, 168, 0.18);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(15, 111, 168, 0.08), rgba(255, 255, 255, 0.92));
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.spotlight-note strong {
+  color: var(--brand-strong);
 }
 
 .executive-section {
