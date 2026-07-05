@@ -16,7 +16,7 @@ Project LotusLift is a collaborative initiative between Microsoft and Health Can
 This repository intentionally separates documentation by audience:
 
 | Audience | Location | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | **Executive / Leadership** | `docs/` | Published GitHub Pages site focused on business outcomes, operating model, phases, and security posture. |
 | **Developers / Delivery Teams** | `developer-docs/` | Practical engineering playbooks, implementation guardrails, and Copilot workflows. |
 
@@ -40,7 +40,7 @@ Start with:
 ## 🧠 Four-Phase Delivery Model (Shared Across All Docs)
 
 | Phase | Purpose | AI Role | Human Gate |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **1. Discover & Document** | Capture legacy workflows, schemas, and constraints | Structure and summarize source context | Team validates baseline accuracy |
 | **2. Define Requirements** | Translate discovery into implementation-ready requirements | Draft requirements and user stories | Team approves scope and priorities |
 | **3. Plan Conversion** | Define target architecture and build sequence | Propose architecture and migration steps | Team approves design and rollout plan |
@@ -83,17 +83,11 @@ See [`developer-docs/data-safeguards.md`](developer-docs/data-safeguards.md) for
 3. Use the developer playbooks in `developer-docs/` to run Phases 1–4.
 4. Build and document the modern implementation in `NewApp/`.
 
-## 📅 Hackathon Reference Window
+## 📅 Hackathon Logistics
 
-- **Location:** Ottawa (remote participation available)
+- **Location:** On-Site - 100 Queen St., Suite 500, Ottawa (remote participation available upon request)
 - **Team:** 3–6 Health Canada developers + Microsoft support
 - **Day length:** 9:00 AM – 4:00 PM (plus optional follow-up)
+- **Lunch:** Provided
 
-## 🔧 Enabling GitHub Pages
-
-1. Push branch to GitHub.
-2. Go to **Settings → Pages**.
-3. Select either:
-   - **GitHub Actions** (recommended), or
-   - **Deploy from a branch** with `main` and `/docs`.
-4. Save and wait for deployment.
+```
