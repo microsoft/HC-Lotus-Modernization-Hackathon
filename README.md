@@ -35,7 +35,7 @@ See [docs/methodology.md](docs/methodology.md) for the full workflow.
 - ✅ Only anonymized screenshots, data schemas, and dummy data are permitted
 - ✅ Modernization is based on visual inputs and AI-assisted generation
 
-See [docs/data-safeguards.md](docs/data-safeguards.md) for full details.
+See [developer-docs/data-safeguards.md](developer-docs/data-safeguards.md) for full details.
 
 ## 📁 Repository Structure
 
@@ -52,10 +52,11 @@ See [docs/data-safeguards.md](docs/data-safeguards.md) for full details.
 ├── App2/                    # Second application (same structure)
 ├── App3/                    # Third application (same structure)
 ├── App4/                    # Fourth application (same structure)
-└── docs/                    # Cross-cutting guides and references
-    ├── data-safeguards.md   # Security and data handling rules
-    ├── methodology.md       # Our AI-assisted modernization workflow
-    └── copilot-tips.md      # GitHub Copilot tips for the team
+├── developer-docs/          # Developer instructions (not published to site)
+│   ├── data-safeguards.md   # Security and data handling rules
+│   ├── methodology.md       # AI-assisted modernization workflow
+│   └── copilot-tips.md      # GitHub Copilot tips for the team
+└── docs/                    # Executive project site (published to GitHub Pages)
 ```
 
 ## 🛠️ Target Technologies
@@ -85,8 +86,8 @@ A ready-to-publish multi-page site is included in `docs/`:
 
 - `docs/index.html` — project landing page
 - `docs/workstreams.html` — delivery workstreams hub
-- `docs/method.html` — methodology timeline
-- `docs/safeguards.html` — security and data safeguards guide
+- `docs/method.html` — methodology and playbook
+- `docs/security.html` — unified security policy
 
 ### Enable Pages
 

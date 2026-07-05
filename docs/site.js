@@ -7,7 +7,7 @@ const appTracks = [
     outputs: ["Context package", "Workflow inventory", "Validated baseline"],
     links: [
       { label: "Method Phase", href: "method.html#phase-discovery" },
-      { label: "Detailed Method", href: "methodology.html" },
+      { label: "Detailed Method", href: "method.html" },
     ],
   },
   {
@@ -18,7 +18,7 @@ const appTracks = [
     outputs: ["Prioritized requirements", "User stories", "Acceptance criteria"],
     links: [
       { label: "Method Phase", href: "method.html#phase-requirements" },
-      { label: "Prompt Guidance", href: "copilot-tips.html" },
+      { label: "Prompt Guidance", href: "https://github.com/microsoft/HC-Lotus-Modernization-Hackathon/blob/main/developer-docs/copilot-tips.md" },
     ],
   },
   {
@@ -29,7 +29,7 @@ const appTracks = [
     outputs: ["Target architecture", "Conversion sequence", "Risk controls"],
     links: [
       { label: "Method Phase", href: "method.html#phase-plan" },
-      { label: "Full Methodology", href: "methodology.html" },
+      { label: "Full Methodology", href: "method.html" },
     ],
   },
   {
@@ -40,7 +40,7 @@ const appTracks = [
     outputs: ["Refactored modules", "Validation tests", "Reusable AI prompt patterns"],
     links: [
       { label: "Method Phase", href: "method.html#phase-execute" },
-      { label: "Execution Guide", href: "methodology.html" },
+      { label: "Execution Guide", href: "method.html" },
     ],
   },
 ];
