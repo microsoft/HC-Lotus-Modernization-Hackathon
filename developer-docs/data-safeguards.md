@@ -1,75 +1,88 @@
-# Security & Data Safeguards
+# Security & Data Safeguards (Developer Policy)
 
-## ⚠️ CRITICAL: No Private or Protected Information
+This file is the developer-level implementation policy that aligns with `docs/security.html`.
 
-This repository is used for a collaborative hackathon between Microsoft and Health Canada. **Absolutely no private, protected, or production data may be committed to this repository.**
+## Non-negotiable baseline
 
----
+**No private, protected, or production data may be committed to this repository.**
 
-## Principles
-
-### What This Project Will NOT Do
-
-1. **No production data will be used** — All data in this repo is dummy/randomized
-2. **No system data will be altered or extracted** from Health Canada environments
-3. **Existing Lotus Notes systems will NOT be modified** or accessed directly
-4. **AI tools will NOT access internal Health Canada applications**
-5. **No PII (Personally Identifiable Information)** will be stored in any form
-6. **No credentials, tokens, or secrets** will be committed
-
-### What This Project WILL Do
-
-1. Use **anonymized screenshots** of Lotus Notes applications (with all real data redacted)
-2. Use **data schemas** (field names/types only — no real values)
-3. Generate **randomized/dummy datasets** for development and testing
-4. Build modern application code based on **visual inputs and AI-assisted generation**
-5. Store all documentation, code, and architecture decisions
+This includes direct values, screenshots, logs, exports, copied snippets, and any derived artifact that can identify real people, systems, or internal infrastructure.
 
 ---
 
-## Before You Commit — Checklist
+## What is allowed vs prohibited
 
-Ask yourself before every commit:
-
-- [ ] Does this file contain any real user data? → **DO NOT COMMIT**
-- [ ] Does this screenshot show real names, emails, or case numbers? → **REDACT FIRST**
-- [ ] Does this contain any Health Canada system credentials? → **DO NOT COMMIT**
-- [ ] Does this reference internal network addresses or endpoints? → **REMOVE**
-- [ ] Is this data schema populated with real values? → **REPLACE WITH DUMMY DATA**
-
----
-
-## Acceptable Content
-
-| Type | Rules |
-|------|-------|
-| Screenshots | Must be anonymized — redact/blur any real data visible |
-| Data schemas | Field names and types only — no real record values |
-| Sample data | Must be obviously fake (e.g., "Jane Doe", "test@example.com") |
-| Code | Application code, configs (no secrets), tests |
-| Documentation | Business rules, workflows, architecture (no internal URLs/IPs) |
-
-## Prohibited Content
-
-| Type | Action |
-|------|--------|
-| Production database exports | Never commit — delete immediately if found |
-| Real user names/emails | Redact before committing |
-| HC internal URLs or IPs | Remove before committing |
-| API keys, passwords, tokens | Use environment variables; add to .gitignore |
-| Unredacted screenshots | Blur/redact all PII before committing |
+| Category | Allowed | Prohibited |
+|---|---|---|
+| Screenshots | Anonymized, redacted captures | Unredacted UI with names, emails, IDs, case data |
+| Data | Synthetic/dummy records | Production or user-originated records |
+| Schemas | Field names/types/relations | Real data values embedded in examples |
+| Infrastructure | Generic architecture patterns | Internal hostnames, IP ranges, private endpoints |
+| Secrets | Placeholders and mock values | API keys, passwords, tokens, live certs |
 
 ---
 
-## If You Accidentally Commit Sensitive Data
+## Secure workflow by phase
 
-1. **Do NOT just delete the file** — it remains in git history
-2. Notify the team immediately
-3. Use `git filter-branch` or BFG Repo-Cleaner to purge from history
-4. Rotate any exposed credentials immediately
+### Phase 1 (Discovery)
+- Redact screenshots before adding to `LotusApp/screenshots/`
+- Keep only structural schema details in `LotusApp/data-schema/`
+- Do not paste sensitive details into Copilot prompts
+
+### Phase 2 (Requirements)
+- Write requirements in business-functional language
+- Exclude references to internal production systems and addresses
+- Keep real case/user examples out of user stories
+
+### Phase 3 (Planning)
+- Use generic environment naming (e.g., `dev`, `test`, `prod`)
+- Do not include tenant identifiers, secret names, or private URLs in architecture docs
+- Document security assumptions explicitly
+
+### Phase 4 (Execution)
+- Keep secrets in environment variables or secure secret stores only
+- Never hardcode credentials in code, tests, config, or markdown
+- Prefer fake fixtures and synthetic test datasets
 
 ---
 
-## Contact
+## Redaction standard
 
-If you have questions about what's safe to commit, ask before committing. When in doubt, leave it out.
+Before committing an image or copied snippet, verify:
+
+- Names, emails, usernames, IDs, and case numbers are removed
+- Dates/timestamps that can identify records are generalized if sensitive
+- Internal URL bars, hostnames, and environment labels are hidden
+- Any browser tab/title that reveals internal systems is masked
+
+If unsure, do not commit until reviewed by a teammate.
+
+---
+
+## Commit-time checklist (required)
+
+- [ ] No real user or production data in staged files
+- [ ] No credentials or tokens in staged files
+- [ ] No internal endpoints/IPs/hostnames in staged files
+- [ ] Screenshots are redacted
+- [ ] Dummy/test data is clearly synthetic
+- [ ] AI-generated code was reviewed by a human before commit
+
+---
+
+## If sensitive content is discovered
+
+1. Stop sharing and stop further commits that propagate exposure.
+2. Notify project owners/security contacts immediately.
+3. Rotate any potentially exposed credentials immediately.
+4. Remove exposure from history using approved org process/tooling.
+5. Document what happened and the corrective action taken.
+
+Do not treat file deletion alone as remediation; history must be addressed.
+
+---
+
+## Developer operating principle
+
+Use AI to accelerate implementation, not to relax controls.  
+When in doubt: **leave it out and ask before committing**.

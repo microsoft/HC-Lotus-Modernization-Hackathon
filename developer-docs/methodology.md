@@ -1,145 +1,170 @@
-# Methodology: AI-Assisted Legacy Application Modernization
+# Developer Methodology Playbook
 
-## Overview
+This is the delivery-team companion to the executive pages in `docs/`.  
+Principle: **AI accelerates, humans decide**.
 
-This document describes our four-phase approach to modernizing legacy applications using GitHub Copilot and AI-assisted development. Each phase builds on the previous one, with AI accelerating execution and DTB teams validating quality.
+## Who this is for
 
----
+- Developers implementing app modernization in `App1/` to `App4/`
+- Technical leads running quality gates and architecture decisions
+- Coaches supporting Copilot adoption during execution
 
-## Phase 1: Document the Existing Application
+## Delivery model (same four phases as executive docs)
 
-**Goal:** Capture everything about the current Lotus Notes app so AI can understand it.
-
-### Inputs (from HC developers)
-- Anonymized screenshots of all major screens/forms
-- Data schema exports (field names, types, relationships)
-- Verbal/written descriptions of business rules and workflows
-- User role descriptions
-
-### Process
-1. Add screenshots to `LotusApp/screenshots/`
-2. Document the data schema in `LotusApp/data-schema/`
-3. Open GitHub Copilot Chat and provide screenshots + context
-4. Ask Copilot to generate comprehensive documentation:
-   - "Based on these screenshots, document this application's UI, forms, and navigation"
-   - "Given this data schema, describe the data model and relationships"
-   - "Document the likely business rules and workflows"
-5. Review, refine, and save to `LotusApp/documentation/`
-
-### Outputs
-- Complete application documentation in `LotusApp/documentation/`
-- Data model documentation in `LotusApp/data-schema/`
-- Annotated screenshots showing key UI elements
+| Phase | Purpose | Primary outputs | Human checkpoint |
+|---|---|---|---|
+| **1. Discover & Document** | Capture legacy context clearly | `LotusApp/documentation/*` + schema notes | Team confirms baseline is accurate |
+| **2. Define Requirements** | Turn discovery into build scope | `NewApp/docs/requirements.md` + user stories | Team approves scope/priorities |
+| **3. Plan Conversion** | Choose architecture and sequence | `NewApp/docs/architecture.md`, `conversion-plan.md` | Team approves implementation plan |
+| **4. Execute & Deliver** | Build modern increments safely | Code + tests + decision log | Team approves quality before merge |
 
 ---
 
-## Phase 2: Generate Requirements
+## Phase 1: Discover & Document
 
-**Goal:** Translate the existing app documentation into clear requirements for the modern version.
+**Goal:** Remove ambiguity before coding starts.
 
-### Process
-1. Feed the Phase 1 documentation into Copilot Chat
-2. Prompt: "Based on this documentation of an existing Lotus Notes application, generate a requirements document for a modern web application replacement. Include functional requirements, data requirements, and user stories."
-3. Iterate with the HC developer team to validate and refine
-4. Identify what's in-scope for the hackathon PoC vs. future work
+### Inputs
+- Anonymized screenshots (`LotusApp/screenshots/`)
+- Field/type definitions (`LotusApp/data-schema/`)
+- Business workflow notes and role context
 
-### Outputs
-- `NewApp/docs/requirements.md` — Functional and non-functional requirements
-- Prioritized backlog (what to build in the hackathon vs. later)
+### Copilot usage
+- Use image + text prompts to extract UI elements and inferred rules
+- Ask Copilot to produce structured docs (screens, workflows, validations, edge cases)
+- Ask Copilot to highlight unknowns and assumptions explicitly
 
----
+### Team responsibilities
+- Correct incorrect assumptions
+- Add domain context AI cannot infer
+- Approve a shared baseline package before moving to Phase 2
 
-## Phase 3: Create a Conversion Plan
-
-**Goal:** Define the technical architecture and step-by-step build plan.
-
-### Process
-1. Feed requirements + data schema into Copilot
-2. Prompt: "Given these requirements and this data schema, propose a modern application architecture using [.NET/Python]. Include database schema, API design, and UI components."
-3. Have Copilot generate a step-by-step conversion plan
-4. Review architecture decisions with the team
-5. Generate dummy/randomized data matching the schema
-
-### Outputs
-- `NewApp/docs/architecture.md` — Technical architecture
-- `NewApp/docs/conversion-plan.md` — Ordered build steps
-- `NewApp/dummy-data/` — Generated test data
+### Definition of done
+- Main forms/workflows are documented
+- Data entities and relationships are captured
+- Known gaps are listed as open questions
 
 ---
 
-## Phase 4: Execute the Build
+## Phase 2: Define Requirements
 
-**Goal:** Build the modern application with AI-assisted coding.
+**Goal:** Convert context into implementation-ready scope.
 
-### Process
-1. Follow the conversion plan step by step
-2. Use Copilot Agent Mode (Ctrl+I / Cmd+I) to generate code:
-   - Database models/migrations
-   - API endpoints
-   - Business logic
-   - UI components
-   - Tests
-3. Use Copilot Chat for debugging and refinement
-4. Iterate rapidly — AI generates, human validates
+### Copilot usage
+- Generate first drafts of:
+  - Functional requirements
+  - User stories with acceptance criteria
+  - Non-functional requirements (security, accessibility, performance)
 
-### Outputs
-- Working PoC application in `NewApp/src/`
-- Documentation of decisions made in `NewApp/docs/decisions.md`
+### Team responsibilities
+- Prioritize backlog for hackathon scope
+- Mark out-of-scope items for follow-up
+- Validate that requirements map to real operations
 
----
-
-## Prompting Tips for Each Phase
-
-### Phase 1 — Documentation Prompts
-```
-"Look at this screenshot of a Lotus Notes form. Describe all the fields, their likely data types, 
-and the business purpose of this form."
-
-"Given this list of database fields: [paste schema], describe the data model, 
-relationships between entities, and likely validation rules."
-```
-
-### Phase 2 — Requirements Prompts
-```
-"Based on this application documentation, generate user stories in the format: 
-As a [role], I want to [action], so that [benefit]."
-
-"What are the key functional requirements to replicate this Lotus Notes application 
-as a modern web app?"
-```
-
-### Phase 3 — Architecture Prompts
-```
-"Propose a .NET Web API + React architecture for this application. 
-Include the database schema, API endpoints, and component breakdown."
-
-"Generate a SQL schema based on this Lotus Notes field definition: [paste schema]"
-
-"Create a seed data script with 50 randomized records matching this schema."
-```
-
-### Phase 4 — Coding Prompts
-```
-"Generate an Entity Framework model for this database schema."
-
-"Create a REST API controller for CRUD operations on [entity]."
-
-"Build a React component that displays this data in a table with filtering and sorting."
-
-"Write unit tests for this business logic."
-```
+### Definition of done
+- Approved requirements document in `NewApp/docs/requirements.md`
+- Prioritized scope list and acceptance criteria
+- Explicit in-scope vs. future-scope boundaries
 
 ---
 
-## Time Allocation (7-hour hackathon day)
+## Phase 3: Plan Conversion
 
-| Time | Phase | Activity |
-|------|-------|----------|
-| 9:00–9:30 | Setup | Intros, repo walkthrough, environment check |
-| 9:30–10:30 | Phase 1 | Document existing apps (screenshots → AI docs) |
-| 10:30–11:00 | Phase 2 | Generate requirements from documentation |
-| 11:00–11:30 | Phase 3 | Architecture & conversion plan |
-| 11:30–12:00 | Lunch break | |
-| 12:00–3:00 | Phase 4 | Build! AI-assisted coding sprint |
-| 3:00–3:30 | Demo | Show what was built |
-| 3:30–4:00 | Wrap-up | Next steps, learnings, knowledge transfer |
+**Goal:** Commit to a practical architecture and sequencing plan.
+
+### Copilot usage
+- Propose architecture options with tradeoffs
+- Draft API boundaries, data model, and UI component breakdown
+- Generate an ordered implementation plan
+
+### Team responsibilities
+- Select architecture and reject unsafe/unfit options
+- Align plan to timeline and team capacity
+- Validate test-data strategy (dummy/synthetic only)
+
+### Definition of done
+- `NewApp/docs/architecture.md` and `NewApp/docs/conversion-plan.md` approved
+- Dependency/order of build tasks is explicit
+- Risk and mitigation notes are documented
+
+---
+
+## Phase 4: Execute & Deliver
+
+**Goal:** Build working increments with safe AI-assisted velocity.
+
+### Copilot usage
+- Generate code and tests incrementally (small reviewable chunks)
+- Refactor, explain, and tighten code based on reviewer feedback
+- Help draft docs for design decisions and tradeoffs
+
+### Team responsibilities
+- Enforce code review and security checks
+- Verify tests and maintainability
+- Decide merge readiness
+
+### Definition of done
+- Working increment in `NewApp/src/`
+- Test coverage for critical business paths
+- Decisions captured in `NewApp/docs/decisions.md`
+
+---
+
+## Quality gates by phase
+
+1. **Gate 1 (after Phase 1):** "This represents the current system correctly."
+2. **Gate 2 (after Phase 2):** "This is the scope we agree to build."
+3. **Gate 3 (after Phase 3):** "This architecture and sequence are approved."
+4. **Gate 4 (during Phase 4):** "This increment is secure, tested, and maintainable."
+
+No gate pass = no phase progression.
+
+---
+
+## Practical prompt templates
+
+### Discovery
+```text
+Based on these screenshots and schema notes, produce:
+1) screen-by-screen workflow,
+2) field-level data model mapping,
+3) inferred business rules,
+4) open questions requiring human confirmation.
+```
+
+### Requirements
+```text
+Generate prioritized user stories with acceptance criteria from this baseline.
+Separate must-have, should-have, and future items.
+```
+
+### Planning
+```text
+Propose two architecture options for this scope.
+For each: data model, API shape, frontend structure, risks, and why/when to choose it.
+```
+
+### Execution
+```text
+Implement [feature] in small commits:
+1) model changes,
+2) API endpoint,
+3) UI binding,
+4) tests.
+Explain assumptions and list follow-up tasks.
+```
+
+---
+
+## Suggested hackathon pacing (reference)
+
+| Time | Focus |
+|---|---|
+| 9:00–9:15 | Setup and scope alignment |
+| 9:15–10:00 | Phase 1 discovery package |
+| 10:00–11:00 | Phase 2 requirement refinement |
+| 11:00–12:00 | Phase 3 architecture and plan |
+| 1:00–3:30 | Phase 4 build/test/review |
+| 3:30–4:30 | Demo + handoff + follow-up actions |
+
+Use this as a guide; adapt by app complexity.
