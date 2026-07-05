@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Phases d'exécution | Project LotusLift</title>
+    <meta name="description" content="Quatre phases d'exécution avec détails progressifs : ce qui se passe, qui est responsable et comment l'IA assiste à chaque étape." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <div class="background-grid" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="index-fr.html">Project LotusLift</a>
+      <nav>
+        <a href="index-fr.html">Accueil</a>
+        <a href="methodology-fr.html">Méthodologie opérationnelle</a>
+        <a href="phases-fr.html" aria-current="page">Phases d'exécution</a>
+        <a href="security-fr.html">Sécurité</a>
+      </nav>
+      <a class="lang-toggle" href="phases.html">English</a>
+    </header>
+
+    <main class="layout">
+      <section class="phase-banner reveal" aria-label="Objet de la page">
+        <p class="eyebrow">Exécution étape par étape</p>
+        <h1>Phases d'exécution</h1>
+        <p>
+          Quatre phases de la découverte à la livraison. Développez chaque phase pour voir la responsabilité, les livrables,
+          les responsabilités de l'IA et des exemples pratiques de requêtes.
+        </p>
+      </section>
+
+      <section class="spotlight-grid">
+        <article class="card spotlight reveal delay-1">
+          <h2>Du patrimonial au moderne en 4 étapes</h2>
+          <p>
+            Chaque phase a 2 objectifs principaux : laisser l'IA faire le gros du travail et réduire progressivement l'incertitude.
+            La découverte élimine l'ambiguïté. Les exigences verrouillent la portée. La planification supprime le risque
+            architectural. L'exécution livre un logiciel fonctionnel. Aucune phase n'est omise — c'est ce qui rend le modèle prévisible.
+          </p>
+        </article>
+        <article class="card spotlight reveal delay-2">
+          <h2>L'IA accélère, les humains décident</h2>
+          <p>
+            À chaque phase, l'IA gère le travail de volume — rédaction, génération, proposition. L'équipe DTB gère le
+            travail de jugement — validation, priorisation, approbation. Aucune production de l'IA n'est livrée sans
+            un point de contrôle humain.
+          </p>
+        </article>
+      </section>
+
+      <section class="method-divider reveal delay-2" aria-label="Séparateur des phases">
+        <p class="eyebrow">Détails progressifs</p>
+        <h2>Quatre phases, transparence complète</h2>
+        <p>Développez chaque phase ci-dessous pour voir exactement ce qui se passe, qui est responsable et comment l'IA participe.</p>
+      </section>
+
+      <section class="phases-accordion" aria-label="Phases d'exécution">
+
+        <details class="phase-detail reveal delay-1">
+          <summary class="phase-summary">
+            <span class="phase-id">01</span>
+            <div class="phase-summary-text">
+              <h2>Découvrir et cadrer</h2>
+              <p>Capturer le contexte patrimonial : flux de travail, schémas, contraintes et hypothèses de fonctionnement.</p>
+            </div>
+          </summary>
+          <div class="phase-body">
+            <div class="role-blocks">
+              <div class="role-block">
+                <p class="role-label">L'IA fait</p>
+                <ul class="clean-list">
+                  <li>Structurer et résumer les artéfacts capturés</li>
+                  <li>Rédiger des narratifs de flux de travail et des descriptions de modèles de données</li>
+                  <li>Identifier les lacunes et demander des clarifications</li>
+                </ul>
+              </div>
+              <div class="role-block">
+                <p class="role-label">L'équipe DTB fait</p>
+                <ul class="clean-list">
+                  <li>Fournir le contexte source et les nuances métier</li>
+                  <li>Valider et corriger la documentation générée</li>
+                  <li>Approuver la base de référence avant de passer à la phase 2</li>
+                </ul>
+              </div>
+            </div>
+            <div class="phase-outputs">
+              <h3>Livrables</h3>
+              <ul class="clean-list">
+                <li>Ensemble de contexte validé</li>
+                <li>Inventaire des flux de travail avec points de décision</li>
+                <li>Contraintes de base et limites de données</li>
+              </ul>
+            </div>
+            <details class="phase-deep">
+              <summary class="phase-deep-toggle">Requêtes, exemples et allocation du temps</summary>
+              <div class="phase-deep-body">
+                <h4>Exemples de requêtes</h4>
+                <ul class="clean-list">
+                  <li>« À partir de ces captures d'écran, documentez l'interface utilisateur, les formulaires et le flux de navigation de cette application. »</li>
+                  <li>« Étant donné ce schéma de données, décrivez le modèle de données, les relations et les règles de validation probables. »</li>
+                  <li>« Documentez les règles d'affaires et les flux de travail visibles dans ces écrans. »</li>
+                </ul>
+                <h4>Allocation du temps</h4>
+                <p>Généralement 60 à 90 minutes. Concentré en amont sur la collecte d'artéfacts, puis la synthèse par l'IA, puis la révision par l'équipe.</p>
+                <h4>Point de contrôle qualité</h4>
+                <p>L'équipe DTB confirme : « Cette documentation représente fidèlement notre système actuel. » Aucun codage ne commence avant que ce point de contrôle ne soit franchi.</p>
+              </div>
+            </details>
+          </div>
+        </details>
+
+        <details class="phase-detail reveal delay-2">
+          <summary class="phase-summary">
+            <span class="phase-id">02</span>
+            <div class="phase-summary-text">
+              <h2>Définir les exigences</h2>
+              <p>Transformer la découverte en exigences prêtes pour la mise en œuvre, récits utilisateur et critères d'acceptation.</p>
+            </div>
+          </summary>
+          <div class="phase-body">
+            <div class="role-blocks">
+              <div class="role-block">
+                <p class="role-label">L'IA fait</p>
+                <ul class="clean-list">
+                  <li>Générer une ébauche d'exigences fonctionnelles à partir de la documentation</li>
+                  <li>Proposer des récits utilisateur dans un format standard</li>
+                  <li>Suggérer des critères non fonctionnels et des vérifications d'acceptation</li>
+                </ul>
+              </div>
+              <div class="role-block">
+                <p class="role-label">L'équipe DTB fait</p>
+                <ul class="clean-list">
+                  <li>Réviser, modifier et prioriser les exigences générées</li>
+                  <li>Confirmer l'alignement aux réalités opérationnelles</li>
+                  <li>Définir ce qui est dans la portée par rapport aux travaux futurs</li>
+                </ul>
+              </div>
+            </div>
+            <div class="phase-outputs">
+              <h3>Livrables</h3>
+              <ul class="clean-list">
+                <li>Document d'exigences priorisées</li>
+                <li>Récits utilisateur avec critères d'acceptation</li>
+                <li>Limites de portée (inclus/exclus pour cet engagement)</li>
+              </ul>
+            </div>
+            <details class="phase-deep">
+              <summary class="phase-deep-toggle">Requêtes, exemples et allocation du temps</summary>
+              <div class="phase-deep-body">
+                <h4>Exemples de requêtes</h4>
+                <ul class="clean-list">
+                  <li>« À partir de cette documentation, générez des récits utilisateur au format : En tant que [rôle], je veux [action], afin de [bénéfice]. »</li>
+                  <li>« Quelles sont les exigences fonctionnelles clés pour reproduire cette application en tant qu'application Web moderne? »</li>
+                  <li>« Suggérez des exigences non fonctionnelles pour la performance, l'accessibilité et la sécurité. »</li>
+                </ul>
+                <h4>Allocation du temps</h4>
+                <p>30 à 45 minutes. L'IA génère rapidement; le temps de l'équipe est consacré à la priorisation et aux décisions de portée.</p>
+                <h4>Point de contrôle qualité</h4>
+                <p>L'équipe DTB confirme : « Ces exigences représentent ce que nous devons construire. » Le travail d'architecture ne commence qu'après cette approbation.</p>
+              </div>
+            </details>
+          </div>
+        </details>
+
+        <details class="phase-detail reveal delay-3">
+          <summary class="phase-summary">
+            <span class="phase-id">03</span>
+            <div class="phase-summary-text">
+              <h2>Planifier la conversion</h2>
+              <p>Définir l'architecture, le séquencement de la migration et les limites de mise en œuvre avant le début du codage.</p>
+            </div>
+          </summary>
+          <div class="phase-body">
+            <div class="role-blocks">
+              <div class="role-block">
+                <p class="role-label">L'IA fait</p>
+                <ul class="clean-list">
+                  <li>Proposer des options d'architecture cible avec compromis</li>
+                  <li>Générer le séquencement de migration et le plan de livraison par phases</li>
+                  <li>Rédiger le schéma de base de données et les limites d'API</li>
+                </ul>
+              </div>
+              <div class="role-block">
+                <p class="role-label">L'équipe DTB fait</p>
+                <ul class="clean-list">
+                  <li>Sélectionner l'approche architecturale et finaliser les décisions</li>
+                  <li>Approuver le déploiement par phases et les contrôles de risque</li>
+                  <li>Générer les données de test correspondant au schéma approuvé</li>
+                </ul>
+              </div>
+            </div>
+            <div class="phase-outputs">
+              <h3>Livrables</h3>
+              <ul class="clean-list">
+                <li>Document d'architecture cible</li>
+                <li>Plan de conversion ordonné (séquence de construction)</li>
+                <li>Données fictives/de test pour le développement</li>
+              </ul>
+            </div>
+            <details class="phase-deep">
+              <summary class="phase-deep-toggle">Requêtes, exemples et allocation du temps</summary>
+              <div class="phase-deep-body">
+                <h4>Exemples de requêtes</h4>
+                <ul class="clean-list">
+                  <li>« Proposez une architecture d'application moderne pour ces exigences. Incluez le schéma de base de données, la conception d'API et la décomposition en composants. »</li>
+                  <li>« Générez un schéma SQL basé sur cette définition de champs. »</li>
+                  <li>« Créez un script de données initiales avec 50 enregistrements aléatoires correspondant à ce schéma. »</li>
+                </ul>
+                <h4>Allocation du temps</h4>
+                <p>30 à 45 minutes. Les décisions d'architecture sont le goulot d'étranglement — l'IA propose rapidement, l'équipe délibère.</p>
+                <h4>Point de contrôle qualité</h4>
+                <p>L'équipe DTB confirme : « Cette architecture et ce plan sont approuvés pour la mise en œuvre. » Le codage ne commence qu'après cette approbation.</p>
+              </div>
+            </details>
+          </div>
+        </details>
+
+        <details class="phase-detail reveal delay-3">
+          <summary class="phase-summary">
+            <span class="phase-id">04</span>
+            <div class="phase-summary-text">
+              <h2>Exécuter et livrer</h2>
+              <p>Construire des incréments de modernisation avec codage assisté par l'IA et révision humaine obligatoire à chaque fusion.</p>
+            </div>
+          </summary>
+          <div class="phase-body">
+            <div class="role-blocks">
+              <div class="role-block">
+                <p class="role-label">L'IA fait</p>
+                <ul class="clean-list">
+                  <li>Générer le code, les tests et l'infrastructure à partir du plan</li>
+                  <li>Assister au débogage et à l'accélération des itérations</li>
+                  <li>Suggérer des améliorations de refactorisation et de documentation</li>
+                </ul>
+              </div>
+              <div class="role-block">
+                <p class="role-label">L'équipe DTB fait</p>
+                <ul class="clean-list">
+                  <li>Valider l'exactitude, la sécurité et la maintenabilité</li>
+                  <li>Assumer la qualité finale du code et la préparation à la production</li>
+                  <li>Documenter les décisions et capturer les modèles réutilisables</li>
+                </ul>
+              </div>
+            </div>
+            <div class="phase-outputs">
+              <h3>Livrables</h3>
+              <ul class="clean-list">
+                <li>Incrément d'application fonctionnel</li>
+                <li>Tests automatisés et suite de validation</li>
+                <li>Modèles de requêtes réutilisables et manuel de livraison</li>
+              </ul>
+            </div>
+            <details class="phase-deep">
+              <summary class="phase-deep-toggle">Requêtes, exemples et allocation du temps</summary>
+              <div class="phase-deep-body">
+                <h4>Exemples de requêtes</h4>
+                <ul class="clean-list">
+                  <li>« Générez un modèle Entity Framework pour ce schéma de base de données. »</li>
+                  <li>« Créez un contrôleur d'API REST pour les opérations CRUD sur [entité]. »</li>
+                  <li>« Construisez un composant React qui affiche ces données dans un tableau avec filtrage et tri. »</li>
+                  <li>« Rédigez des tests unitaires pour cette logique métier. »</li>
+                </ul>
+                <h4>Allocation du temps</h4>
+                <p>3+ heures (majeure partie de l'engagement). Cycles d'itération rapides : l'IA génère → l'humain révise → l'IA affine.</p>
+                <h4>Point de contrôle qualité</h4>
+                <p>L'équipe DTB confirme : « Cet incrément fonctionne, est testé et respecte nos normes. » Livrable prêt pour démonstration avant la conclusion.</p>
+              </div>
+            </details>
+          </div>
+        </details>
+
+      </section>
+
+      <section class="method-divider reveal" aria-label="Séparateur de chronologie">
+        <p class="eyebrow">Référence</p>
+        <h2>Chronologie d'une journée de hackathon</h2>
+        <p>Comment ces phases s'articulent lors d'une journée d'engagement typique de 7 heures.</p>
+      </section>
+
+      <section class="doc-content reveal delay-1" aria-label="Tableau de chronologie">
+        <table>
+          <thead>
+            <tr>
+              <th>Heure</th>
+              <th>Phase</th>
+              <th>Activité</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>9 h 00 – 9 h 15</td>
+              <td>Mise en place</td>
+              <td>Présentations, préparation de l'environnement, alignement de la portée</td>
+            </tr>
+            <tr>
+              <td>9 h 15 – 10 h 00</td>
+              <td>Phase 1</td>
+              <td>Capture de la découverte et synthèse de la documentation</td>
+            </tr>
+            <tr>
+              <td>10 h 00 – 11 h 00</td>
+              <td>Phase 2</td>
+              <td>Définition et priorisation des exigences</td>
+            </tr>
+            <tr>
+              <td>11 h 00 – 12 h 00</td>
+              <td>Phase 3</td>
+              <td>Planification de la conversion et décisions d'architecture</td>
+            </tr>
+            <tr>
+              <td>12 h 00 – 13 h 00</td>
+              <td>Dîner</td>
+              <td>Pause</td>
+            </tr>
+            <tr>
+              <td>13 h 00 – 15 h 30</td>
+              <td>Phase 4</td>
+              <td>Sprint d'exécution avec codage assisté par l'IA et révisions</td>
+            </tr>
+            <tr>
+              <td>15 h 30 – 16 h 00</td>
+              <td>Présentation du résultat</td>
+              <td>Démonstration de l'incrément fonctionnel et des résultats</td>
+            </tr>
+            <tr>
+              <td>16 h 00 – 16 h 30</td>
+              <td>Transfert</td>
+              <td>Leçons apprises, prochaines étapes et transfert d'habilitation</td>
+            </tr>
+            <tr>
+              <td>Suivi</td>
+              <td>Interne DTB</td>
+              <td>Évaluation de sécurité, évaluation et données probantes; revues et recommandations d'accessibilité</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer class="layout footer">
+      <p>Quatre phases, transparence complète, contrôle humain à chaque point de passage.</p>
+    </footer>
+
+    <script src="site.js"></script>
+  </body>
+</html>

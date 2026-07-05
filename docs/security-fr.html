@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Centre de sécurité | Project LotusLift</title>
+    <meta
+      name="description"
+      content="Politique de sécurité unifiée pour Project LotusLift : aperçu exécutif d'abord, contrôles complets des données et de l'ingénierie ci-dessous."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <div class="background-grid" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="index-fr.html">Project LotusLift</a>
+      <nav>
+        <a href="index-fr.html">Accueil</a>
+        <a href="methodology-fr.html">Méthodologie opérationnelle</a>
+        <a href="phases-fr.html">Phases d'exécution</a>
+        <a href="security-fr.html" aria-current="page">Sécurité</a>
+      </nav>
+      <a class="lang-toggle" href="security.html">English</a>
+    </header>
+
+    <main class="layout">
+      <section class="phase-banner reveal" aria-label="Objet de la page">
+        <p class="eyebrow">Sécurité unifiée</p>
+        <h1>Aperçu de la sécurité et politique complète</h1>
+        <p>
+          Une page unique pour les dirigeants et les équipes de livraison : résumé exécutif de la sécurité en haut,
+          suivi des contrôles complets pour les données, le code, l'accès et les pratiques opérationnelles.
+        </p>
+      </section>
+
+      <section class="spotlight-grid reveal delay-1">
+        <article class="card spotlight">
+          <h2>Résumé exécutif</h2>
+          <ul class="clean-list">
+            <li>Aucune donnée privée, protégée ou de production dans ce dépôt</li>
+            <li>La révision humaine est obligatoire avant chaque validation et fusion</li>
+            <li>La sécurité couvre plus que les données : identité, qualité du code et opérations</li>
+          </ul>
+        </article>
+        <article class="card spotlight">
+          <h2>Intention des contrôles</h2>
+          <p>
+            Maintenir une vitesse de modernisation élevée tout en prévenant les fuites de données, la promotion de code
+            non sécuritaire et l'exposition accidentelle de détails sensibles de l'entreprise.
+          </p>
+        </article>
+      </section>
+
+      <section class="method-divider reveal delay-2" aria-label="Séparateur de politique de sécurité">
+        <p class="eyebrow">Contrôles détaillés</p>
+        <h2>Politique de sécurité complète</h2>
+        <p>Tout ce qui suit est la politique opérationnelle que les équipes suivent pendant ce hackathon d'habilitation.</p>
+      </section>
+
+      <section class="cards reveal delay-2">
+        <article class="card">
+          <h3>Règles de traitement des données</h3>
+          <ul class="clean-list">
+            <li>Permis : captures d'écran anonymisées, métadonnées de schéma et données fictives/aléatoires</li>
+            <li>Interdit : exportations de production, identifiants personnels, justificatifs d'identité, points de terminaison internes/IP</li>
+            <li>Toutes les captures d'écran doivent être caviardées avant la validation</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Contrôles d'identité et d'accès</h3>
+          <ul class="clean-list">
+            <li>Accès selon le principe du moindre privilège pour les rôles de dépôt et de déploiement</li>
+            <li>Aucun justificatif d'identité partagé; aucun secret dans le code, la documentation ou les captures d'écran</li>
+            <li>Rotation et révocation immédiates en cas de soupçon d'exposition</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Contrôles du code et de la chaîne d'approvisionnement</h3>
+          <ul class="clean-list">
+            <li>Seules les productions de l'IA révisées par un humain; aucune copie et fusion aveugle</li>
+            <li>Vérifications des dépendances et des licences avant la promotion</li>
+            <li>Privilégier les modèles maintenables plutôt que le code généré ponctuel</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="timeline" aria-label="Liste de vérification d'exécution de sécurité">
+        <article class="timeline-item reveal delay-1">
+          <span class="phase-id">01</span>
+          <div>
+            <h2>Révision pré-validation</h2>
+            <p>Vérifier qu'aucune donnée sensible, secret, détail d'infrastructure interne ou capture d'écran non caviardée n'est mis en zone de transit.</p>
+          </div>
+        </article>
+        <article class="timeline-item reveal delay-2">
+          <span class="phase-id">02</span>
+          <div>
+            <h2>Point de contrôle qualité et sécurité</h2>
+            <p>Confirmer que le code généré est correct, sécuritaire, appuyé par des tests et conforme aux normes de codage de l'équipe.</p>
+          </div>
+        </article>
+        <article class="timeline-item reveal delay-3">
+          <span class="phase-id">03</span>
+          <div>
+            <h2>Processus d'intervention</h2>
+            <p>Si du contenu sensible est découvert : aviser immédiatement les responsables, supprimer l'exposition de l'historique, effectuer la rotation des justificatifs d'identité
+              et documenter l'action corrective.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="doc-content reveal delay-2" aria-label="Politique de données détaillée">
+        <h2>Politique de données détaillée</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Catégorie</th>
+              <th>Permis</th>
+              <th>Non permis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Artéfacts d'application</td>
+              <td>Captures d'écran anonymisées et descriptions de flux de travail</td>
+              <td>Écrans non caviardés contenant des noms, courriels, identifiants ou détails de dossiers</td>
+            </tr>
+            <tr>
+              <td>Contenu de données</td>
+              <td>Ensembles de données fictives et enregistrements synthétiques</td>
+              <td>Enregistrements de production ou provenant d'utilisateurs</td>
+            </tr>
+            <tr>
+              <td>Détails d'infrastructure</td>
+              <td>Modèles d'architecture génériques</td>
+              <td>Noms d'hôtes internes, plages d'adresses IP, secrets de locataire, points de terminaison privés</td>
+            </tr>
+            <tr>
+              <td>Justificatifs d'identité</td>
+              <td>Espaces réservés pour les secrets et valeurs simulées</td>
+              <td>Clés API, mots de passe, jetons ou certificats actifs</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Cette page consolidée est la source de vérité pour l'exécution de la sécurité dans ce dépôt.
+        </p>
+      </section>
+    </main>
+
+    <footer class="layout footer">
+      <p>La livraison axée sur la sécurité est le fondement de ce modèle de modernisation.</p>
+    </footer>
+
+    <script src="site.js"></script>
+  </body>
+</html>
