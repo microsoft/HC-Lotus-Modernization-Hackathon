@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GitHub Copilot — Governance Standard Operating Procedure</title>
+<script>
+  (() => {
+    const param = new URLSearchParams(window.location.search).get("scoutTheme");
+    const theme = param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  })();
+</script>
+<style>
+:root {
+  color-scheme: light;
+  --cp-bg: #f7f4ef;
+  --cp-bg-elevated: #fcfbf8;
+  --cp-surface: #ffffff;
+  --cp-surface-soft: #f5f5f5;
+  --cp-border: #dedede;
+  --cp-border-strong: #919191;
+  --cp-text: #242424;
+  --cp-text-muted: #5c5c5c;
+  --cp-text-soft: #6f6f6f;
+  --cp-accent: #1966A8;
+  --cp-accent-hover: #145590;
+  --cp-accent-soft: rgba(25, 102, 168, 0.08);
+  --cp-accent-fg: #ffffff;
+  --cp-success: #16a34a;
+  --cp-danger: #dc2626;
+  --cp-warning: #f59e0b;
+  --cp-link: #0078d4;
+  --cp-shadow: 0 18px 48px rgba(0,0,0,0.12);
+  --cp-overlay: rgba(255,255,255,0.8);
+  --cp-panel: rgba(255,255,255,0.86);
+  --cp-panel-strong: rgba(255,255,255,0.96);
+  --cp-sheen: rgba(255,255,255,0.55);
+  --cp-highlight: rgba(25, 102, 168, 0.12);
+
+  /* GC-specific */
+  --gc-accent: #2B5C8A;
+  --gc-bar: #26374a;
+  --gc-bar-text: #ffffff;
+  --gc-link: #284162;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --cp-bg: #3d3b3a;
+  --cp-bg-elevated: #343231;
+  --cp-surface: #292929;
+  --cp-surface-soft: #2e2e2e;
+  --cp-border: #474747;
+  --cp-border-strong: #5f5f5f;
+  --cp-text: #dedede;
+  --cp-text-muted: #919191;
+  --cp-text-soft: #b0b0b0;
+  --cp-accent: #62A8DC;
+  --cp-accent-hover: #52A0D6;
+  --cp-accent-soft: rgba(98, 168, 220, 0.14);
+  --cp-accent-fg: #1a1a1a;
+  --cp-success: #4ade80;
+  --cp-danger: #f87171;
+  --cp-warning: #fbbf24;
+  --cp-link: #4da6ff;
+  --cp-shadow: 0 18px 48px rgba(0,0,0,0.32);
+  --cp-overlay: rgba(41,41,41,0.88);
+  --cp-panel: rgba(41,41,41,0.72);
+  --cp-panel-strong: rgba(41,41,41,0.96);
+  --cp-sheen: rgba(255,255,255,0.04);
+  --cp-highlight: rgba(98, 168, 220, 0.12);
+
+  --gc-bar: #1a2a3a;
+  --gc-bar-text: #dedede;
+  --gc-link: #7db3e8;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--cp-bg);
+  color: var(--cp-text);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* GC TOP BAR */
+.gc-topbar {
+  background: var(--gc-bar);
+  color: var(--gc-bar-text);
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+}
+.gc-topbar .gc-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+}
+.gc-maple {
+  font-size: 22px;
+  line-height: 1;
+}
+.gc-topbar .gc-lang {
+  color: var(--gc-bar-text);
+  opacity: 0.7;
+  font-size: 13px;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 2px 8px;
+  transition: all 0.15s;
+}
+.gc-topbar .gc-lang:hover { opacity: 1; background: rgba(255,255,255,0.12); }
+.lang-toggle { display: flex; align-items: center; gap: 2px; }
+.lang-active {
+  background: rgba(255,255,255,0.22);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--gc-bar-text);
+}
+
+/* DRAFT BANNER */
+.gc-banner {
+  background: var(--gc-accent);
+  color: white;
+  padding: 6px 24px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.draft-badge {
+  background: rgba(255,255,255,0.2);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 11px;
+}
+
+/* LAYOUT */
+.layout {
+  display: flex;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 16px;
+  gap: 0;
+  align-items: flex-start;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 16px;
+  padding: 24px 0 24px 0;
+  border-right: 1px solid var(--cp-border);
+  margin-right: 32px;
+}
+.sidebar h3 {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cp-text-muted);
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid var(--cp-border);
+  margin-bottom: 10px;
+}
+.sidebar nav a {
+  display: block;
+  padding: 5px 8px 5px 10px;
+  font-size: 13px;
+  color: var(--cp-text);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  border-radius: 0 4px 4px 0;
+  transition: all 0.15s;
+  line-height: 1.4;
+}
+.sidebar nav a:hover {
+  color: var(--cp-accent);
+  border-left-color: var(--cp-accent);
+  background: var(--cp-accent-soft);
+}
+.sidebar nav a.active {
+  color: var(--cp-accent);
+  border-left-color: var(--cp-accent);
+  background: var(--cp-accent-soft);
+  font-weight: 600;
+}
+.sidebar .section-group { margin-bottom: 6px; }
+
+/* MAIN CONTENT */
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 24px 0 64px 0;
+}
+
+/* DOC HEADER */
+.doc-header {
+  padding: 24px 0 24px 0;
+  border-bottom: 2px solid var(--cp-border);
+  margin-bottom: 32px;
+}
+.doc-category {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--cp-accent);
+  margin-bottom: 8px;
+}
+.doc-title {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--cp-text);
+  margin-bottom: 6px;
+}
+.doc-subtitle {
+  font-size: 16px;
+  color: var(--cp-text-muted);
+  margin-bottom: 16px;
+}
+.doc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--cp-text-soft);
+}
+.doc-meta span { display: flex; align-items: center; gap: 4px; }
+.doc-meta strong { color: var(--cp-text); }
+
+/* SECTIONS */
+.section {
+  margin-bottom: 40px;
+  scroll-margin-top: 24px;
+}
+.section h2 {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--cp-text);
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--cp-accent);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section h2 .sec-num {
+  background: var(--cp-accent);
+  color: var(--cp-accent-fg);
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.section h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--cp-text);
+  margin: 20px 0 8px;
+}
+.section p { margin-bottom: 12px; color: var(--cp-text); }
+.section ul, .section ol {
+  margin: 0 0 12px 20px;
+  color: var(--cp-text);
+}
+.section li { margin-bottom: 5px; }
+
+/* CALLOUT BOXES */
+.callout {
+  border-left: 4px solid var(--cp-border-strong);
+  background: var(--cp-surface-soft);
+  padding: 12px 16px;
+  border-radius: 0 8px 8px 0;
+  margin: 14px 0;
+  font-size: 14px;
+}
+.callout.info { border-left-color: var(--cp-link); }
+.callout.warning { border-left-color: var(--cp-warning); background: rgba(245,158,11,0.06); }
+.callout.danger { border-left-color: var(--cp-danger); background: rgba(220,38,38,0.06); }
+.callout.success { border-left-color: var(--cp-success); background: rgba(22,163,74,0.06); }
+.callout.gc { border-left-color: var(--gc-accent); background: rgba(43, 92, 138, 0.06); }
+.callout strong { display: block; margin-bottom: 4px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.7; }
+
+/* POLICY REFERENCE PILLS */
+.policy-refs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 16px;
+}
+.policy-pill {
+  background: var(--cp-surface);
+  border: 1px solid var(--cp-border);
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: 12px;
+  color: var(--cp-text-muted);
+  white-space: nowrap;
+}
+.policy-pill.active {
+  background: var(--cp-accent-soft);
+  border-color: var(--cp-accent);
+  color: var(--cp-accent);
+  font-weight: 600;
+}
+
+/* RACI TABLE */
+table.raci {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 12px 0;
+}
+table.raci th {
+  background: var(--gc-bar);
+  color: white;
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 12px;
+}
+table.raci td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--cp-border);
+  vertical-align: top;
+}
+table.raci tr:nth-child(even) td { background: var(--cp-surface-soft); }
+.raci-r { color: var(--cp-danger); font-weight: 700; }
+.raci-a { color: var(--cp-warning); font-weight: 700; }
+.raci-c { color: var(--cp-link); font-weight: 700; }
+.raci-i { color: var(--cp-text-muted); }
+
+/* DATA CLASSIFICATION TABLE */
+table.data-class {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 12px 0;
+}
+table.data-class th {
+  background: var(--cp-surface-soft);
+  border: 1px solid var(--cp-border);
+  padding: 8px 12px;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+table.data-class td {
+  border: 1px solid var(--cp-border);
+  padding: 8px 12px;
+  vertical-align: top;
+}
+.class-pb { background: rgba(220,38,38,0.07); }
+.class-pa { background: rgba(245,158,11,0.07); }
+.class-unc { background: rgba(22,163,74,0.07); }
+.badge {
+  display: inline-block;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.badge-pb { background: var(--cp-danger); color: white; }
+.badge-pa { background: var(--cp-warning); color: #1a1a1a; }
+.badge-unc { background: var(--cp-success); color: white; }
+.badge-draft { background: var(--cp-text-muted); color: white; }
+
+/* CHECKLIST */
+.checklist {
+  list-style: none;
+  margin: 0 0 16px 0;
+}
+.checklist li {
+  padding: 8px 12px 8px 36px;
+  position: relative;
+  border-bottom: 1px solid var(--cp-border);
+  font-size: 14px;
+}
+.checklist li:last-child { border-bottom: none; }
+.checklist li::before {
+  content: "☐";
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  color: var(--cp-text-muted);
+  font-size: 16px;
+}
+
+/* PRINT / VERSION FOOTER */
+.doc-footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--cp-border);
+  font-size: 12px;
+  color: var(--cp-text-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .layout { flex-direction: column; }
+}
+
+@media print {
+  .gc-topbar, .gc-banner, .sidebar { display: none; }
+  .main { padding: 0; }
+  .layout { max-width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- GC TOP BAR -->
+<div class="gc-topbar">
+  <div class="gc-logo">
+    <span class="gc-maple">🍁</span>
+    <span>Government of Canada</span>
+  </div>
+  <div class="lang-toggle">
+    <span class="lang-active">EN</span>
+    <a href="GHCP_PNG_GC.html" class="gc-lang">FR</a>
+  </div>
+</div>
+
+<!-- DRAFT BANNER -->
+<div class="gc-banner">
+  <span>📄 Standard Operating Procedure</span>
+  <span class="draft-badge">DRAFT v0.1 — For Review</span>
+  <span style="margin-left:auto; font-size:11px; opacity:0.8;">Document Control: IT Security &amp; Digital Transformation Branch</span>
+</div>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h3>Contents</h3>
+    <nav id="sidebar-nav">
+      <div class="section-group">
+        <a href="#s1" class="active">1. Document Information</a>
+        <a href="#s2">2. Purpose &amp; Scope</a>
+        <a href="#s3">3. Policy Alignment</a>
+        <a href="#s4">4. Roles &amp; Responsibilities</a>
+        <a href="#s5">5. Acceptable Use</a>
+        <a href="#s6">6. Data Classification</a>
+        <a href="#s7">7. Licensing &amp; Onboarding</a>
+        <a href="#s8">8. Code Review &amp; Oversight</a>
+        <a href="#s9">9. Security &amp; IP</a>
+        <a href="#s10">10. Official Languages</a>
+        <a href="#s11">11. Monitoring &amp; Audit</a>
+        <a href="#s12">12. Incident Response</a>
+        <a href="#s13">13. Review Cycle</a>
+        <a href="#s14">Appendix A — Onboarding Checklist</a>
+        <a href="#s15">Appendix B — Glossary</a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- DOCUMENT HEADER -->
+    <div class="doc-header">
+      <div class="doc-category">IT Governance · Developer Tooling · Artificial Intelligence</div>
+      <h1 class="doc-title">GitHub Copilot<br/>Governance Standard Operating Procedure</h1>
+      <div class="doc-meta">
+        <span><strong>Version:</strong> 0.1 DRAFT</span>
+        <span><strong>Date:</strong> July 2026</span>
+        <span><strong>Owner:</strong> Director, Digital Transformation</span>
+        <span><strong>Classification:</strong> <span class="badge badge-unc">UNCLASSIFIED</span></span>
+        <span><strong>Next Review:</strong> October 2026</span>
+      </div>
+    </div>
+
+    <!-- SECTION 1 — DOCUMENT INFORMATION -->
+    <section class="section" id="s1">
+      <h2><span class="sec-num">1</span>Document Information</h2>
+      <table class="raci">
+        <thead>
+          <tr><th>Field</th><th>Details</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Document Title</strong></td><td>GitHub Copilot Governance Standard Operating Procedure</td></tr>
+          <tr><td><strong>Document ID</strong></td><td>DT-SOP-[TBD]</td></tr>
+          <tr><td><strong>Version</strong></td><td>0.1 — Initial Draft for Stakeholder Review</td></tr>
+          <tr><td><strong>Effective Date</strong></td><td>TBD — Pending IT Security Approval</td></tr>
+          <tr><td><strong>Document Owner</strong></td><td>Director, Digital Transformation Branch</td></tr>
+          <tr><td><strong>Review Authority</strong></td><td>IT Security &amp; Privacy; Chief Information Officer Branch</td></tr>
+          <tr><td><strong>Approval Authority</strong></td><td>CIO / CISO (as applicable)</td></tr>
+          <tr><td><strong>Applies To</strong></td><td>All developers, architects, and technical staff using GitHub Copilot under the organizational enterprise license</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout gc">
+        <strong>📋 How to Use This Document</strong>
+        This SOP establishes the governance framework for authorized use of GitHub Copilot across the organization. It should be read in conjunction with the organization's Acceptable Use Policy, IT Security Policy, and the TBS <em>Guide on the Use of Generative AI</em>. Sections marked <span class="badge badge-draft">ACTION REQUIRED</span> indicate items where organizational specifics must be filled in before final publication.
+      </div>
+    </section>
+
+    <!-- SECTION 2 — PURPOSE & SCOPE -->
+    <section class="section" id="s2">
+      <h2><span class="sec-num">2</span>Purpose &amp; Scope</h2>
+
+      <h3>2.1 Purpose</h3>
+      <p>This Standard Operating Procedure (SOP) establishes the governance framework, acceptable use guidelines, data handling requirements, and oversight mechanisms for the deployment and use of GitHub Copilot as an AI-assisted coding tool within the organization.</p>
+      <p>GitHub Copilot is an AI-powered developer assistant — powered by large language models (LLMs) — that provides in-editor code suggestions, completions, and explanations. This SOP ensures that its use aligns with Government of Canada (GC) policy obligations, information security requirements, and the principles of responsible AI.</p>
+
+      <h3>2.2 Scope</h3>
+      <p>This SOP applies to:</p>
+      <ul>
+        <li>All employees, contractors, and consultants authorized to use GitHub Copilot under the organizational enterprise license</li>
+        <li>All source code repositories, integrated development environments (IDEs), and development pipelines where GitHub Copilot is activated</li>
+        <li>Use of GitHub Copilot in GitHub.com cloud environments, GitHub Enterprise Server, and any IDE plugins (VS Code, Visual Studio, JetBrains, Neovim)</li>
+      </ul>
+
+      <div class="callout warning">
+        <strong>⚠️ Out of Scope</strong>
+        This SOP does not govern use of consumer-grade AI coding tools (e.g., ChatGPT, Claude, Gemini) for development purposes. Use of such tools is addressed in the organization's separate <em>Generative AI Acceptable Use Policy</em>.
+      </div>
+
+      <h3>2.3 Objectives</h3>
+      <ul>
+        <li>Enable developer productivity through AI assistance while managing risk</li>
+        <li>Ensure compliance with GC information security and privacy obligations</li>
+        <li>Establish clear roles, responsibilities, and accountability</li>
+        <li>Protect against intellectual property, supply chain, and data residency risks</li>
+        <li>Support responsible AI principles including human oversight and transparency</li>
+      </ul>
+    </section>
+
+    <!-- SECTION 3 — POLICY ALIGNMENT -->
+    <section class="section" id="s3">
+      <h2><span class="sec-num">3</span>Policy Alignment &amp; Regulatory Framework</h2>
+
+      <p>This SOP operates within, and is subordinate to, the following GC and organizational policy instruments:</p>
+
+      <div class="policy-refs">
+        <span class="policy-pill active">TBS Guide on Generative AI</span>
+        <span class="policy-pill active">Directive on Automated Decision-Making</span>
+        <span class="policy-pill active">Policy on Government Security</span>
+        <span class="policy-pill active">Directive on Security Management</span>
+        <span class="policy-pill active">Privacy Act / ATIP</span>
+        <span class="policy-pill">Official Languages Act</span>
+        <span class="policy-pill">ITSG-33</span>
+        <span class="policy-pill">GC Cloud Guardrails</span>
+        <span class="policy-pill">Directive on Service &amp; Digital</span>
+      </div>
+
+      <table class="raci" style="margin-top:16px;">
+        <thead>
+          <tr><th>Policy Instrument</th><th>Relevant Obligation</th><th>How This SOP Addresses It</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>TBS Guide on Use of Generative AI</strong> (2024)</td>
+            <td>Assess risk, maintain human oversight, protect sensitive data, be transparent with users</td>
+            <td>Sections 5, 6, 8 — Acceptable use, data classification, human review requirements</td>
+          </tr>
+          <tr>
+            <td><strong>Directive on Automated Decision-Making</strong></td>
+            <td>Disclose AI involvement; maintain audit trail; ensure human in the loop for consequential decisions</td>
+            <td>Section 8 — Mandatory human code review; Section 11 — Audit logging</td>
+          </tr>
+          <tr>
+            <td><strong>Policy on Government Security</strong></td>
+            <td>Protect information assets at appropriate classification level</td>
+            <td>Section 6 — Data classification matrix; Protected B restrictions</td>
+          </tr>
+          <tr>
+            <td><strong>Privacy Act &amp; ATIP</strong></td>
+            <td>Personal information must not be disclosed to unauthorized third parties or AI training systems</td>
+            <td>Section 6.2 — Personal Information prohibition; Section 9.2 — Training data opt-out configuration</td>
+          </tr>
+          <tr>
+            <td><strong>Official Languages Act</strong></td>
+            <td>Services and communications available in both official languages</td>
+            <td>Section 10 — Bilingual delivery requirements for AI-generated outputs</td>
+          </tr>
+          <tr>
+            <td><strong>GC Cloud Security Risk Management</strong> (ITSG-33)</td>
+            <td>SA&amp;A required for new IT systems and major service changes</td>
+            <td>Section 7.1 — SA&amp;A prerequisite before enterprise rollout</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout gc">
+        <strong>🍁 GC Responsible AI Principles Alignment</strong>
+        The Treasury Board Secretariat's <em>Responsible Use of AI</em> framework identifies five principles: <strong>Transparency</strong>, <strong>Accountability</strong>, <strong>Fairness</strong>, <strong>Safety</strong>, and <strong>Privacy</strong>. Each section of this SOP maps to one or more of these principles. Where suggestions are incorporated into production code, developers are responsible for declaring AI-assisted authorship in commit messages or pull request descriptions.
+      </div>
+    </section>
+
+    <!-- SECTION 4 — ROLES & RESPONSIBILITIES -->
+    <section class="section" id="s4">
+      <h2><span class="sec-num">4</span>Roles &amp; Responsibilities</h2>
+
+      <p>The following RACI matrix defines accountability for key governance activities. <span class="raci-r">R = Responsible</span> · <span class="raci-a">A = Accountable</span> · <span class="raci-c">C = Consulted</span> · <span class="raci-i">I = Informed</span></p>
+
+      <table class="raci">
+        <thead>
+          <tr>
+            <th>Activity</th>
+            <th>CIO / CISO</th>
+            <th>IT Security</th>
+            <th>Dev Leads / Team Leads</th>
+            <th>Developers</th>
+            <th>Privacy Officer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Approve enterprise license &amp; SOP</td>
+            <td class="raci-a">A</td><td class="raci-c">C</td><td class="raci-c">C</td><td class="raci-i">I</td><td class="raci-c">C</td>
+          </tr>
+          <tr>
+            <td>Conduct Security Assessment &amp; Authorization (SA&amp;A)</td>
+            <td class="raci-a">A</td><td class="raci-r">R</td><td class="raci-c">C</td><td class="raci-i">I</td><td class="raci-c">C</td>
+          </tr>
+          <tr>
+            <td>Configure enterprise Copilot policies (org-level)</td>
+            <td class="raci-a">A</td><td class="raci-r">R</td><td class="raci-c">C</td><td class="raci-i">I</td><td class="raci-i">I</td>
+          </tr>
+          <tr>
+            <td>Onboard developers &amp; assign licenses</td>
+            <td class="raci-i">I</td><td class="raci-c">C</td><td class="raci-r">R</td><td class="raci-i">I</td><td class="raci-i">I</td>
+          </tr>
+          <tr>
+            <td>Complete mandatory training</td>
+            <td class="raci-i">I</td><td class="raci-i">I</td><td class="raci-a">A</td><td class="raci-r">R</td><td class="raci-i">I</td>
+          </tr>
+          <tr>
+            <td>Review &amp; approve AI-assisted code (pull requests)</td>
+            <td class="raci-i">I</td><td class="raci-c">C</td><td class="raci-a">A</td><td class="raci-r">R</td><td class="raci-i">I</td>
+          </tr>
+          <tr>
+            <td>Monitor usage &amp; produce quarterly reports</td>
+            <td class="raci-a">A</td><td class="raci-r">R</td><td class="raci-c">C</td><td class="raci-i">I</td><td class="raci-c">C</td>
+          </tr>
+          <tr>
+            <td>Manage incident response (data exfiltration, misuse)</td>
+            <td class="raci-a">A</td><td class="raci-r">R</td><td class="raci-c">C</td><td class="raci-r">R</td><td class="raci-r">R</td>
+          </tr>
+          <tr>
+            <td>Annual SOP review &amp; recertification</td>
+            <td class="raci-a">A</td><td class="raci-r">R</td><td class="raci-c">C</td><td class="raci-i">I</td><td class="raci-c">C</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>4.1 GitHub Copilot Administrator</h3>
+      <p>A designated <strong>GitHub Copilot Administrator</strong> role shall be assigned at the enterprise level. This individual is responsible for managing seat assignments, configuring organizational policies, enabling/disabling Copilot features, and producing usage reports. This role should reside within the IT Security or Digital Transformation function. <span class="badge badge-draft">ACTION REQUIRED — assign named owner</span></p>
+    </section>
+
+    <!-- SECTION 5 — ACCEPTABLE USE -->
+    <section class="section" id="s5">
+      <h2><span class="sec-num">5</span>Acceptable Use Policy</h2>
+
+      <h3>5.1 Authorized Uses</h3>
+      <p>GitHub Copilot may be used for the following activities on approved government workloads:</p>
+      <ul>
+        <li>Generating code completions and suggestions in authorized repositories</li>
+        <li>Explaining existing code, generating inline documentation and comments</li>
+        <li>Writing unit tests, test fixtures, and boilerplate configuration files</li>
+        <li>Refactoring and modernizing legacy code (e.g., Powerbuilder modernization PoC)</li>
+        <li>Generating SQL queries, scripts, and pipeline definitions on non-production data</li>
+        <li>Answering developer questions in Copilot Chat about APIs, syntax, and architecture</li>
+        <li>Generating draft commit messages and pull request descriptions</li>
+      </ul>
+
+      <h3>5.2 Prohibited Uses</h3>
+      <div class="callout danger">
+        <strong>🚫 PROHIBITED — Non-Compliant Uses</strong>
+        The following uses are expressly prohibited and may result in disciplinary action and/or license revocation:
+      </div>
+      <ul>
+        <li><strong>Inputting Protected B or higher data</strong> into any Copilot prompt or context window — including voter registration data, financial data, health information, law enforcement data, or security credentials</li>
+        <li><strong>Inputting Personally Identifiable Information (PII)</strong> of Canadian citizens or employees</li>
+        <li>Using Copilot on repositories containing classified information (Protected B, C, or Secret)</li>
+        <li>Accepting AI-generated code without review, testing, and validation</li>
+        <li>Using Copilot to circumvent security controls, generate exploit code, or probe vulnerabilities</li>
+        <li>Sharing Copilot-generated code externally without review for intellectual property concerns</li>
+        <li>Using personal GitHub accounts to access Copilot on government workloads</li>
+        <li>Installing Copilot plugins on non-approved, non-managed devices</li>
+      </ul>
+
+      <h3>5.3 Developer Obligations</h3>
+      <p>Every authorized developer agrees to the following upon license activation:</p>
+      <ul>
+        <li>Complete mandatory training before first use (see Section 7.2)</li>
+        <li>Treat all Copilot suggestions as untrusted draft code requiring human review</li>
+        <li>Flag AI-assisted contributions in pull request descriptions using the standard tag: <code>[copilot-assisted]</code></li>
+        <li>Immediately report suspected data leakage, inappropriate suggestions, or security concerns to IT Security</li>
+        <li>Not circumvent organization-level policy settings (e.g., re-enabling disabled features)</li>
+      </ul>
+    </section>
+
+    <!-- SECTION 6 — DATA CLASSIFICATION -->
+    <section class="section" id="s6">
+      <h2><span class="sec-num">6</span>Data Classification &amp; Handling Requirements</h2>
+
+      <p>GitHub Copilot processes code context (open files, surrounding code) as prompt input to generate suggestions. The following matrix governs what data types may be included in this context:</p>
+
+      <table class="data-class">
+        <thead>
+          <tr>
+            <th>Classification</th>
+            <th>Examples (Government Context)</th>
+            <th>GitHub Copilot</th>
+            <th>Controls Required</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="class-unc">
+            <td><span class="badge badge-unc">UNCLASSIFIED</span></td>
+            <td>Public-facing code, open-source libraries, generic business logic, configuration templates with no sensitive values</td>
+            <td>✅ <strong>Permitted</strong></td>
+            <td>Standard enterprise controls; training data opt-out enabled (see 9.2)</td>
+          </tr>
+          <tr class="class-pa">
+            <td><span class="badge badge-pa">PROTECTED A</span></td>
+            <td>Internal business processes, low-sensitivity employee information, general correspondence templates</td>
+            <td>⚠️ <strong>Conditional</strong></td>
+            <td>Data must be generalized/anonymized before use as prompt context; SA&amp;A must confirm acceptable residency; no hardcoded credentials</td>
+          </tr>
+          <tr class="class-pb">
+            <td><span class="badge badge-pb">PROTECTED B</span></td>
+            <td>Electoral data, voter registration records, financial processing code with live data, employee SINs, health records, law enforcement data, political finance records</td>
+            <td>🚫 <strong>PROHIBITED</strong></td>
+            <td>Copilot must be disabled in any IDE workspace or repository containing Protected B data. Contact IT Security for approved alternatives.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>6.1 Repository-Level Controls</h3>
+      <p>GitHub Enterprise Copilot policies shall be configured at the organization level to:</p>
+      <ul>
+        <li>Enable Copilot only for explicitly approved repositories (allowlist model)</li>
+        <li>Disable Copilot in repositories tagged or classified as containing Protected A or B data</li>
+        <li>Require repository-level <code>.copilotignore</code> files in all repositories containing any sensitive paths, configuration files, or credential stores</li>
+      </ul>
+
+      <div class="callout info">
+        <strong>💡 .copilotignore Best Practice</strong>
+        A <code>.copilotignore</code> file (similar to <code>.gitignore</code>) tells GitHub Copilot which files and directories to exclude from its context window. Recommended exclusions include: <code>.env</code>, <code>*.pem</code>, <code>*.key</code>, <code>secrets/</code>, <code>config/credentials/</code>, any files containing database connection strings or API keys, and any files containing test data derived from production systems.
+      </div>
+
+      <h3>6.2 Personal Information — Privacy Act Obligations</h3>
+      <p>Under the <em>Privacy Act</em> (R.S.C., 1985, c. P-21), personal information about identifiable individuals must not be disclosed to third-party systems without consent and legal authority. GitHub Copilot — even with training data opt-out enabled — should not process source code files or query contexts that contain:</p>
+      <ul>
+        <li>Names, SINs, dates of birth, addresses, or other personal identifiers</li>
+        <li>Voter registration or electoral roll data</li>
+        <li>Any data collected under the <em>Canada Elections Act</em> or equivalent provincial statutes</li>
+        <li>Employee personnel records</li>
+      </ul>
+      <p>Developers must ensure all test data used in Copilot-accessible workspaces is synthetic or properly anonymized.</p>
+    </section>
+
+    <!-- SECTION 7 — LICENSING & ONBOARDING -->
+    <section class="section" id="s7">
+      <h2><span class="sec-num">7</span>Licensing, Onboarding &amp; Access Management</h2>
+
+      <h3>7.1 Prerequisites — Security Assessment &amp; Authorization (SA&amp;A)</h3>
+      <p>In accordance with the GC <em>Directive on Security Management</em> and ITSG-33, a Security Assessment and Authorization (SA&amp;A) must be completed and accepted prior to enterprise-wide rollout of GitHub Copilot. The SA&amp;A shall assess:</p>
+      <ul>
+        <li>Data residency and sovereignty (GitHub Copilot uses Microsoft Azure data centres; confirm region alignment with GC requirements)</li>
+        <li>Transmission security (TLS 1.3 in transit; no persistent storage of prompts under enterprise agreement)</li>
+        <li>Training data opt-out verification</li>
+        <li>Identity and access management integration (SSO / Azure AD / Entra ID)</li>
+        <li>Audit logging and SIEM integration capability</li>
+        <li>Supply chain security (GitHub Advanced Security dependency review)</li>
+      </ul>
+
+      <div class="callout success">
+        <strong>✅ GitHub Copilot Enterprise — Key Security Commitments</strong>
+        Under the GitHub Copilot Enterprise Agreement: (1) Prompts and suggestions are <strong>not used to train GitHub's models</strong>; (2) Code context is <strong>not stored beyond the session</strong>; (3) Telemetry is configurable and can be disabled; (4) Data processed in <strong>Azure datacentres</strong> (US East / Canada available); (5) SOC 2 Type II certified; ISO 27001 compliant.
+      </div>
+
+      <h3>7.2 License Provisioning Process</h3>
+      <ol>
+        <li>Developer's manager submits license request through <span class="badge badge-draft">ACTION REQUIRED — insert ITSM/ServiceNow workflow name</span></li>
+        <li>IT Security verifies the developer's workload does not involve Protected B data</li>
+        <li>GitHub Copilot Administrator assigns seat via GitHub Enterprise organization console</li>
+        <li>Developer receives activation email and link to mandatory training</li>
+        <li>Developer completes training and acknowledges this SOP (tracked in <span class="badge badge-draft">ACTION REQUIRED — insert LMS/tracking system</span>)</li>
+        <li>Developer activates Copilot in approved IDE(s) using organizational SSO credentials</li>
+      </ol>
+
+      <h3>7.3 Mandatory Training Requirements</h3>
+      <p>All users must complete the following training before activating GitHub Copilot:</p>
+      <table class="raci">
+        <thead><tr><th>Training Module</th><th>Format</th><th>Est. Duration</th><th>Frequency</th></tr></thead>
+        <tbody>
+          <tr><td>GitHub Copilot Fundamentals</td><td>GitHub Learning Path (free)</td><td>~2 hrs</td><td>Once at onboarding</td></tr>
+          <tr><td>GC Responsible Use of AI</td><td>Canada School of Public Service (CSPS)</td><td>~1 hr</td><td>Annual recertification</td></tr>
+          <tr><td>This SOP — Governance Acknowledgment</td><td>Self-attestation form</td><td>~30 min</td><td>Annual recertification</td></tr>
+          <tr><td>Secure Coding &amp; AI-Assisted Development</td><td>Internal IT Security briefing</td><td>~1 hr</td><td>Once at onboarding</td></tr>
+        </tbody>
+      </table>
+
+      <h3>7.4 Access Revocation</h3>
+      <p>GitHub Copilot licenses shall be revoked under the following conditions:</p>
+      <ul>
+        <li>Employee/contractor departure or role change removing development responsibilities</li>
+        <li>Confirmed SOP violation (at manager/IT Security discretion)</li>
+        <li>Failure to complete annual recertification within the designated window</li>
+        <li>Device compromise or suspected unauthorized access</li>
+      </ul>
+    </section>
+
+    <!-- SECTION 8 — CODE REVIEW & OVERSIGHT -->
+    <section class="section" id="s8">
+      <h2><span class="sec-num">8</span>Code Review &amp; Human Oversight Requirements</h2>
+
+      <div class="callout gc">
+        <strong>🍁 Directive on Automated Decision-Making — Human in the Loop</strong>
+        GitHub Copilot suggestions constitute automated decision support. Consistent with the GC Directive on Automated Decision-Making, no AI-generated code shall be merged to a production branch without explicit human review and approval by an authorized developer or technical lead.
+      </div>
+
+      <h3>8.1 Pull Request Requirements</h3>
+      <p>All pull requests containing AI-assisted code must:</p>
+      <ul>
+        <li>Include the tag <code>[copilot-assisted]</code> in the PR title or description</li>
+        <li>Receive at least <strong>one approved review</strong> from a developer who was not the author (i.e., not the same individual who accepted the Copilot suggestion)</li>
+        <li>Pass all automated CI/CD pipeline checks including static analysis, unit tests, and dependency vulnerability scans (GitHub Advanced Security)</li>
+        <li>For Protected A repositories: require a <strong>second reviewer</strong> sign-off from the team lead or security reviewer</li>
+      </ul>
+
+      <h3>8.2 Developer Responsibility</h3>
+      <p>Developers remain fully accountable for any code they commit, regardless of whether it was AI-generated. Accepting a Copilot suggestion is equivalent to authoring the code. Developers must:</p>
+      <ul>
+        <li>Understand every line of AI-generated code before committing</li>
+        <li>Validate logic correctness, edge cases, and error handling</li>
+        <li>Ensure no sensitive data (credentials, PII) was inadvertently included in a suggestion</li>
+        <li>Run and pass all relevant unit and integration tests</li>
+        <li>Review Copilot suggestions for potential copyright issues (see Section 9.3)</li>
+      </ul>
+
+      <h3>8.3 Prohibited Automation Patterns</h3>
+      <ul>
+        <li>Auto-merge of AI-generated code without human review is expressly prohibited</li>
+        <li>Using Copilot to generate scripts that automate access to government systems without proper authorization</li>
+        <li>Using Copilot Workspace to auto-generate and push entire feature branches without developer review of each commit</li>
+      </ul>
+    </section>
+
+    <!-- SECTION 9 — SECURITY & IP -->
+    <section class="section" id="s9">
+      <h2><span class="sec-num">9</span>Security, Supply Chain &amp; Intellectual Property</h2>
+
+      <h3>9.1 Secrets &amp; Credential Detection</h3>
+      <p>GitHub Advanced Security (GHAS) must be enabled on all repositories where Copilot is active. GHAS Secret Scanning provides real-time detection of accidentally committed credentials. Organizations shall:</p>
+      <ul>
+        <li>Enable <strong>GitHub Secret Scanning</strong> with push protection enabled (blocks pushes containing detected secrets)</li>
+        <li>Enable <strong>Dependabot</strong> alerts and security updates for all dependencies</li>
+        <li>Enforce <strong>code scanning</strong> (CodeQL or equivalent) as a required status check before merge</li>
+        <li>Conduct quarterly reviews of all GHAS alerts and resolution timelines</li>
+      </ul>
+
+      <h3>9.2 Training Data Opt-Out (Enterprise Configuration)</h3>
+      <p>Under the GitHub Copilot Enterprise agreement, code prompts and suggestions are <strong>not used to train GitHub's models by default</strong>. The GitHub Copilot Administrator must confirm this setting in the organization's Copilot policy console:</p>
+      <ul>
+        <li>Navigate to: GitHub Enterprise → Organization → Settings → Copilot → Policies</li>
+        <li>Confirm: <em>"Allow GitHub to use my code snippets from the code editor to improve GitHub Copilot"</em> is set to <strong>Disabled</strong></li>
+        <li>Screenshot this configuration and retain as evidence for SA&amp;A and audit purposes</li>
+      </ul>
+
+      <h3>9.3 Intellectual Property &amp; Copyright</h3>
+      <p>GitHub Copilot may occasionally suggest code that is similar to existing open-source code. Developers must be aware:</p>
+      <ul>
+        <li>Enable GitHub Copilot's built-in <strong>duplication detection filter</strong> — this flags suggestions that closely match public code and displays the matching licence</li>
+        <li>Do not accept suggestions flagged as matching GPL, AGPL, or other copyleft licences for use in proprietary government systems without legal review</li>
+        <li>All AI-generated code incorporated into Crown Copyright works remains subject to the <em>Copyright Act</em> — the Crown retains copyright; developers should document significant AI-assisted contributions</li>
+        <li>Do not submit government code to Copilot prompts in a way that discloses unreleased or proprietary business logic</li>
+      </ul>
+
+      <h3>9.4 Supply Chain Security</h3>
+      <p>Copilot may suggest third-party library imports. Before accepting such suggestions:</p>
+      <ul>
+        <li>Verify the library against the organization's approved dependency catalogue</li>
+        <li>Check for known CVEs via Dependabot or NVD before merging</li>
+        <li>Do not add new package dependencies without team lead approval</li>
+      </ul>
+    </section>
+
+    <!-- SECTION 10 — OFFICIAL LANGUAGES -->
+    <section class="section" id="s10">
+      <h2><span class="sec-num">10</span>Official Languages Requirements</h2>
+
+      <div class="callout info">
+        <strong>🇨🇦 Official Languages Act Obligations</strong>
+        Federal institutions subject to the <em>Official Languages Act</em> (R.S.C., 1985, c. 31) must ensure that AI-generated content used in public-facing or employee-facing communications is available in both English and French.
+      </div>
+
+      <h3>10.1 Code Comments &amp; Documentation</h3>
+      <p>GitHub Copilot generates code comments and documentation primarily in English (the default). For documentation, inline comments, and user-facing strings used in production systems, teams must:</p>
+      <ul>
+        <li>Review AI-generated comments for accuracy before committing — do not rely on Copilot for bilingual content generation without human review</li>
+        <li>For any user-facing strings or system messages generated by Copilot, ensure French translations are produced and reviewed by qualified translators or bilingual staff</li>
+        <li>Use established translation workflows; Copilot-generated French translations are <em>not</em> considered an official translation for ATIP or public communications purposes</li>
+      </ul>
+
+      <h3>10.2 Internal Technical Documentation</h3>
+      <p>Internal technical documentation (README files, architecture notes, developer wikis) generated with Copilot assistance may be maintained in English for internal developer use, consistent with the institution's internal language of work policy.</p>
+    </section>
+
+    <!-- SECTION 11 — MONITORING & AUDIT -->
+    <section class="section" id="s11">
+      <h2><span class="sec-num">11</span>Monitoring, Reporting &amp; Audit</h2>
+
+      <h3>11.1 Usage Metrics (GitHub Copilot Dashboard)</h3>
+      <p>The GitHub Copilot Administrator shall produce a <strong>quarterly usage report</strong> to the CIO/CISO, including:</p>
+      <ul>
+        <li>Total active seats vs. licensed seats (utilization rate)</li>
+        <li>Copilot suggestion acceptance rate by team/repository</li>
+        <li>Copilot Chat query volumes</li>
+        <li>Any incidents or flagged misuse events</li>
+        <li>Training completion rates and outstanding recertifications</li>
+      </ul>
+
+      <h3>11.2 Audit Log Retention</h3>
+      <p>GitHub Enterprise audit logs capture all administrative actions (seat assignments, policy changes, feature enablement). These logs shall be:</p>
+      <ul>
+        <li>Retained for a minimum of <strong>two (2) years</strong> consistent with GC information management obligations</li>
+        <li>Exported monthly to the organization's SIEM or secure log archive</li>
+        <li>Available for ATIP disclosure requests, security reviews, and internal audits</li>
+      </ul>
+
+      <h3>11.3 Annual Security Review</h3>
+      <p>IT Security shall conduct an annual review of the GitHub Copilot deployment, including:</p>
+      <ul>
+        <li>Reassessment of data residency and service terms (vendor agreements change)</li>
+        <li>Review of GHAS alerts and unresolved vulnerabilities introduced since last review</li>
+        <li>Review of any new Copilot features enabled during the year and their security implications</li>
+        <li>Updated threat and risk assessment if the organizational risk posture has changed</li>
+      </ul>
+    </section>
+
+    <!-- SECTION 12 — INCIDENT RESPONSE -->
+    <section class="section" id="s12">
+      <h2><span class="sec-num">12</span>Incident Response</h2>
+
+      <h3>12.1 Reportable Incidents</h3>
+      <p>The following events must be reported immediately to IT Security via <span class="badge badge-draft">ACTION REQUIRED — insert reporting channel/ticket queue</span>:</p>
+      <ul>
+        <li>Suspected submission of Protected B or PII data to Copilot (accidental prompt injection)</li>
+        <li>Copilot suggesting what appears to be sensitive internal data from another repository or system</li>
+        <li>Malicious code suggestions (e.g., suggestions containing obvious backdoors, credential exfiltration)</li>
+        <li>Unauthorized use of Copilot by an unprovisioned individual</li>
+        <li>Loss or compromise of a developer device with an active Copilot session</li>
+      </ul>
+
+      <h3>12.2 Response Procedures</h3>
+      <ol>
+        <li><strong>Contain:</strong> Immediately revoke the affected developer's Copilot license and GitHub access if a breach is suspected</li>
+        <li><strong>Assess:</strong> IT Security reviews Copilot audit logs and GitHub activity to determine scope</li>
+        <li><strong>Notify:</strong> If personal information may have been disclosed, Privacy Officer notified within <strong>24 hours</strong>; OPC notification as required under the <em>Privacy Act</em></li>
+        <li><strong>Remediate:</strong> Remove any committed code containing sensitive data; rotate exposed credentials; issue GitHub secret scanning alerts</li>
+        <li><strong>Document:</strong> Incident report filed within <strong>72 hours</strong>; lessons learned reviewed within 30 days</li>
+      </ol>
+    </section>
+
+    <!-- SECTION 13 — REVIEW CYCLE -->
+    <section class="section" id="s13">
+      <h2><span class="sec-num">13</span>SOP Review Cycle &amp; Governance</h2>
+
+      <p>This SOP shall be reviewed and updated on the following schedule:</p>
+      <table class="raci">
+        <thead><tr><th>Review Type</th><th>Frequency</th><th>Owner</th><th>Trigger</th></tr></thead>
+        <tbody>
+          <tr><td>Routine Review</td><td>Annual (every October)</td><td>IT Security + CIO</td><td>Scheduled</td></tr>
+          <tr><td>Triggered Review</td><td>As required</td><td>IT Security</td><td>Material GitHub Copilot service changes, new TBS guidance, security incident, or major organizational restructuring</td></tr>
+          <tr><td>Developer Feedback Review</td><td>Semi-annual</td><td>GitHub Copilot Admin</td><td>Post-deployment feedback collection from development teams</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout info">
+        <strong>📌 Staying Current with TBS Guidance</strong>
+        The Treasury Board Secretariat updates its <em>Guide on the Use of Generative AI</em> and related instruments as the AI governance landscape evolves. The IT Security function is responsible for monitoring TBS publications and initiating triggered reviews of this SOP when material changes are issued.
+      </div>
+    </section>
+
+    <!-- APPENDIX A — ONBOARDING CHECKLIST -->
+    <section class="section" id="s14">
+      <h2><span class="sec-num">A</span>Appendix A — Developer Onboarding Checklist</h2>
+      <p>To be completed by each developer before activating GitHub Copilot. Retain signed copy in personnel file or IT Security tracking system.</p>
+
+      <p style="margin-bottom:8px;"><strong>Developer Name:</strong> _______________________________ &nbsp;&nbsp; <strong>Date:</strong> _____________</p>
+      <p style="margin-bottom:16px;"><strong>Team / Directorate:</strong> _______________________________</p>
+
+      <ul class="checklist">
+        <li>I have read and understood the GitHub Copilot Governance SOP (this document) in full</li>
+        <li>I have completed the GitHub Copilot Fundamentals learning path on GitHub Learning</li>
+        <li>I have completed the Canada School of Public Service (CSPS) module on Responsible Use of AI</li>
+        <li>I have completed the IT Security briefing on Secure Coding &amp; AI-Assisted Development</li>
+        <li>I understand that I must not input Protected B or personally identifiable information into Copilot prompts or code context</li>
+        <li>I understand that all AI-generated code I accept is my responsibility to review, test, and validate</li>
+        <li>I will tag all AI-assisted pull requests with <code>[copilot-assisted]</code></li>
+        <li>I understand that my GitHub Copilot usage is logged and subject to audit</li>
+        <li>I will report any suspected data leakage, misuse, or security concern to IT Security immediately</li>
+        <li>I understand that failure to comply with this SOP may result in license revocation and disciplinary action</li>
+      </ul>
+
+      <p style="margin-top:16px;"><strong>Developer Signature:</strong> _______________________________ &nbsp;&nbsp; <strong>Date:</strong> _____________</p>
+      <p style="margin-top:8px;"><strong>Manager Signature:</strong> _______________________________ &nbsp;&nbsp; <strong>Date:</strong> _____________</p>
+    </section>
+
+    <!-- APPENDIX B — GLOSSARY -->
+    <section class="section" id="s15">
+      <h2><span class="sec-num">B</span>Appendix B — Glossary</h2>
+      <table class="raci">
+        <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+        <tbody>
+          <tr><td><strong>ATIP</strong></td><td>Access to Information and Privacy — the GC framework governing public access to government records and protection of personal information</td></tr>
+          <tr><td><strong>CSPS</strong></td><td>Canada School of Public Service — the GC's training and learning institution for federal public servants</td></tr>
+          <tr><td><strong>GHAS</strong></td><td>GitHub Advanced Security — a suite of security features including secret scanning, code scanning, and dependency review</td></tr>
+          <tr><td><strong>LLM</strong></td><td>Large Language Model — the underlying AI technology powering GitHub Copilot (specifically, OpenAI Codex/GPT-4 variant)</td></tr>
+          <tr><td><strong>OPC</strong></td><td>Office of the Privacy Commissioner of Canada — the independent oversight body for the Privacy Act and PIPEDA</td></tr>
+          <tr><td><strong>Protected B</strong></td><td>GC information security classification for information whose compromise could cause serious injury to individuals, organizations, or government operations</td></tr>
+          <tr><td><strong>SA&amp;A</strong></td><td>Security Assessment and Authorization — the GC process for formally assessing and accepting IT system risks before deployment, as required by the Directive on Security Management</td></tr>
+          <tr><td><strong>SIEM</strong></td><td>Security Information and Event Management — centralized platform for collecting and analyzing security logs</td></tr>
+          <tr><td><strong>SOP</strong></td><td>Standard Operating Procedure — a documented set of instructions governing a specific process or activity</td></tr>
+          <tr><td><strong>TBS</strong></td><td>Treasury Board of Canada Secretariat — the central agency responsible for GC digital, financial, and people management policies</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="doc-footer">
+      <span>GitHub Copilot Governance SOP — v0.1 DRAFT — <strong>UNCLASSIFIED</strong></span>
+      <span>Prepared with Microsoft Canada Public Sector support · July 2026</span>
+      <span>🍁 Government of Canada</span>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// Sidebar active state on scroll
+const sections = document.querySelectorAll('.section[id]');
+const navLinks = document.querySelectorAll('.sidebar nav a');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+      });
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
+
